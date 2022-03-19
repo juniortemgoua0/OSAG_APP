@@ -22,8 +22,7 @@
       <div class="w-75">
         <span class="sign-in-text ">Sign In</span>
         <p class="mt-3">Bienvenu sur la page de connexion, Veuillez entrer vos informations</p>
-
-        <form method="post" action="index.html" class="mt-3 " >
+        <form method="post" action="dashboard.php" class="mt-3 " >
           <input type="text" class="sign-in-input w-100 px-4 my-3" placeholder="Email...">
           <input type="text" class="sign-in-input w-100 px-4" placeholder="Password...">
           <div class="form-group my-3">
