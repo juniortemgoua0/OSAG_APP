@@ -25,7 +25,7 @@ module.exports = {
     json: './font/bootstrap-icons.json',
     css: './font/bootstrap-icons.css',
     scss: './font/bootstrap-icons.scss',
-    html: './font/dashboard.php',
+    html: './font/login.php',
     ttf: './font/fonts/bootstrap-icons.ttf',
     woff: './font/fonts/bootstrap-icons.woff',
     woff2: './font/fonts/bootstrap-icons.woff2',

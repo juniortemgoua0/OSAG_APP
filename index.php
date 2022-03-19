@@ -1,39 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>login page</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href='css/bootstrap.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<!--  Boostrap icon Link-->
   <link rel="stylesheet" href="assets/icons-1.7.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="css/login.css">
+
+<!--  jquery dabatable links-->
+  <script src="js/jquery.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" defer></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js" defer></script>
+  <script src="js/bootstrap.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div class="vw-100">
-  <div class="row vh-100 w-100">
 
-    <div class="col-6 col-sm-12 col-md-6 vh-100 side-sign-in-img">
-      <div class="cover"></div>
-      <img src="assets/login-image/logo.jpg" class="login-logo" width="300" height="300" alt="">
+<div class="contain">
+
+ <?php require "views/sidebar.php" ?>
+
+  <div class="tab-content section" id="pills-tabContent">
+    <div class="tab-pane fade show active " id="pills-dashboard" role="tabpanel" aria-labelledby="pills-dashboard-tab">
+    <?php require "views/dashboard.php" ?>
     </div>
-    <div class="col-6 col-sm-12 col-md-6 vh-100  overflow-scroll d-flex justify-content-center align-items-center content-form">
-      <div class="w-75">
-        <span class="sign-in-text ">Sign In</span>
-        <p class="mt-3">Bienvenu sur la page de connexion, Veuillez entrer vos informations</p>
-        <form method="post" action="dashboard.php" class="mt-3 " >
-          <input type="text" class="sign-in-input w-100 px-4 my-3" placeholder="Email...">
-          <input type="text" class="sign-in-input w-100 px-4" placeholder="Password...">
-          <div class="form-group my-3">
-            <input type="checkbox" id="remember" class="form-check-input">
-            <label for="remember" class="form-check-label"> Remember passord</label>
-          </div>
-          <button class="sign-in-input w-100 my-3" type="submit">SIGN IN</button>
-        </form>
-      </div>
+
+    <div class="tab-pane fade" id="pills-product" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <?php require "views/product.php"?>
+    </div>
+
+    <div class="tab-pane fade" id="pills-stock" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <?php require "views/stock.php" ?>
+    </div>
+
+    <div class="tab-pane fade" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
+      <?php require "views/setting.php" ?>
     </div>
   </div>
 </div>
+
+
 </body>
 </html>
+
+
+

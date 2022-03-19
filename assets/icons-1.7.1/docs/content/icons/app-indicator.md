@@ -1,5 +1,5 @@
 ---
-title: App indicator
+title: Main indicator
 categories:
   - Apps
 tags:

@@ -1,5 +1,5 @@
 ---
-title: App
+title: Main
 categories:
   - Apps
 tags:
