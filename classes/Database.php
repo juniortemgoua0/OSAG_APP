@@ -9,6 +9,14 @@ class Database
   public static string $username = 'root';
   public static string $password = '';
 
+  public function __construct(string $host, string $port, string $dbName, string $username, string $password){
+      $this->host =$host;
+      $this->port = $port;
+      $this->dbName = $dbName;
+      $this->username= $username;
+      $this->password = $password;
+  }
+
   public static function connect(): PDO
   {
     $pdo = new PDO('mysql:host=' . self::$host . ';port=' . self::$port . ';dbname=' . self::$dbName . ';charset=utf8',
