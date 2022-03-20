@@ -6,9 +6,9 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>login page</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/icons-1.7.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
 <div class="vw-100">
@@ -16,7 +16,7 @@
 
     <div class="col-6 col-sm-12 col-md-6 vh-100 side-sign-in-img">
       <div class="cover"></div>
-      <img src="assets/login-image/logo.jpg" class="login-logo" width="300" height="300" alt="">
+      <img src="assets/images/login-image/logo.jpg" class="login-logo" width="300" height="300" alt="">
     </div>
     <div class="col-6 col-sm-12 col-md-6 vh-100  overflow-scroll d-flex justify-content-center align-items-center content-form">
       <div class="w-75">

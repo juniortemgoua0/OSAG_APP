@@ -1,42 +1,39 @@
 <section class="home-section">
-  <div class="head-section">
-    <h1 class="text-black-50 header-title">Bienvenue sur notre dashboard</h1>
-    <div class="search-user">
+  <div class="head-section row">
+    <h1 class="text-black-50 header-title col-sm-12 col-md-6 order-sm-2 order-md-1">Bienvenue sur notre dashboard</h1>
+    <div class="search-user col-sm-12 col-md-6 order-sm-1 order-md-2">
       <form class="search-bar">
         <input type="text" placeholder="rechercher.....">
         <span>
           <i class="bx bx-search fs-4"></i>
         </span>
       </form>
-
       <div class="user-img">
-        <img src="assets/why-us.jpg" alt="">
+        <img src="../assets/images/why-us.jpg" alt="">
       </div>
     </div>
-
-
   </div>
   <div class="head-info row">
-    <div class=" content-card col-sm-1 col-md-3 ">
+    <div class=" content-card col-sm-1 col-md-4 col-lg-3 ">
       <div class="head-card h-100">
         <li><i class='bx bx-cart-alt cart'></i></li>
         <p>Quantite de produits du stock en cours 23/400</p>
       </div>
     </div>
-    <div class=" content-card col-sm-1 col-md-3 ">
+    <div class=" content-card col-sm-1 col-md-4 col-lg-3 ">
       <div class="head-card h-100">
         <li><i class='bx bx-cart-alt cart'></i></li>
         <p>cle de produits du stock de la secretaire cours 60/100</p>
       </div>
     </div>
-    <div class=" content-card col-sm-1 col-md-3 ">
+    <div class=" content-card col-sm-1 col-md-4 col-lg-3">
       <div class="head-card h-100">
         <li><i class='bx bxs-cart-add cart two'></i></li>
         <p>Quantite de produits du stock en Entree 600/900</p>
       </div>
     </div>
 
-    <div class=" content-card col-sm-1 col-md-3 ">
+    <div class=" content-card col-sm-1 col-md-4 col-lg-3 ">
       <div class="head-card h-100">
         <li><i class='bx bx-down-arrow-alt down'></i></li>
         <p>Quantite de produits du stock en Sortie 1k/2k</p>
@@ -72,8 +69,9 @@
     </tr>
     </thead>
     <tbody>
+    <?php foreach ($t as $a): ?>
     <tr>
-      <td><img src="assets/office-g58d369757_1920.jpg" alt=""></td>
+      <td><img src="../assets/images/office-g58d369757_1920.jpg" alt=""></td>
       <td>Ordinateur Portable</td>
       <td>1000f</td>
       <td>2022/10/14</td>
@@ -85,47 +83,12 @@
       </td>
       <td>
         <div>
-          <i class='bx bxs-trash'></i>
-          <i class='bx bxs-edit'></i>
+          <i class='bx bxs-trash delete fs-4' ></i>
+          <i class='bx bxs-edit edit fs-4'></i>
         </div>
       </td>
     </tr>
-    <tr>
-      <td><img src="assets/office-g58d369757_1920.jpg" alt=""></td>
-      <td>Ordinateur Portable</td>
-      <td>1000f</td>
-      <td>2022/10/14</td>
-      <td>2022/12/16</td>
-      <td>
-        <div class="state d-flex justify-content-evenly align-items-center"><span class="round_dispo"
-                                                                                  style="background: white"></span><span>Disponible</span>
-        </div>
-      </td>
-      <td>
-        <div class="delete">
-          <i class='bx bxs-trash'></i>
-          <i class='bx bxs-edit'></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td><img src="assets/office-g58d369757_1920.jpg" alt=""></td>
-      <td>Ordinateur Portable</td>
-      <td>1000f</td>
-      <td>2022/10/14</td>
-      <td>2022/12/16</td>
-      <td>
-        <div class=" nan-actif d-flex justify-content-evenly align-items-center"><span class="round_dispo"
-                                                                                       style="background: white"></span><span>indisponible</span>
-        </div>
-      </td>
-      <td>
-        <div>
-          <i class='bx bxs-trash'></i>
-          <i class='bx bxs-edit'></i>
-        </div>
-      </td>
-    </tr>
+    <?php endforeach; ?>
     </tbody>
   </table>
 </section>
