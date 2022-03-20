@@ -98,7 +98,7 @@ button.sign-in-input{
   color: white;
 }
 .side-sign-in-img {
-  background-image: url("../images/login-image/iphone.jpg");
+  background-image: url("../images/login-image/iphone.jpg"); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

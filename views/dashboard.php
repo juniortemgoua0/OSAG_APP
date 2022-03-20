@@ -32,7 +32,6 @@
         <p>Quantite de produits du stock en Entree 600/900</p>
       </div>
     </div>
-
     <div class=" content-card col-sm-1 col-md-4 col-lg-3 ">
       <div class="head-card h-100">
         <li><i class='bx bx-down-arrow-alt down'></i></li>
@@ -77,8 +76,8 @@
       <td>2022/10/14</td>
       <td>2022/12/16</td>
       <td>
-        <div class="state d-flex justify-content-evenly align-items-center"><span class="round_dispo"
-                                                                                  style="background: white"></span><span>Disponible</span>
+        <div class="state d-flex justify-content-evenly align-items-center">
+          <span class="round_dispo" style="background: white"></span><span>Disponible</span>
         </div>
       </td>
       <td>
