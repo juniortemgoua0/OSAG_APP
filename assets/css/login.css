@@ -1,0 +1,144 @@
+:root {
+  --primary-color: #CCA66D;
+  --secondary-color: #494949;
+  --blue-color: #66C8FF
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.menu {
+  background-color: var(--secondary-color);
+}
+
+.menu-item {
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 24px;
+}
+
+.menu-item-text {
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.active {
+  border-radius: 5px;
+  background-color: var(--primary-color)
+}
+
+.logo-text {
+  font-weight: 100;
+}
+
+.header-text {
+  font-size: 28px;
+}
+
+.btn-new-link {
+  text-decoration: none;
+  background-color: var(--primary-color);;
+  color: white;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.btn-new-link:hover {
+  background-color: #189fea;
+  color: white;
+
+}
+
+.blue-btn {
+
+}
+
+.search {
+  height: 42px;
+  width: 240px;
+  border: 1px solid var(--blue-color);
+}
+
+.input-search {
+  outline: none;
+  width: 60%;
+}
+
+tr.tr-item {
+  border: 1px solid var(--blue-color);
+  background-color: #F1FAFF;
+}
+
+td {
+  height: 70px;
+}
+
+
+/*----sign page ----------*/
+.sign-in-text {
+  font-size: 40px;
+}
+
+.sign-in-input {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  box-shadow: -5px 0px 5px #dadada;
+  height: 40px;
+}
+button.sign-in-input{
+  background-color: var(--primary-color);
+  color: white;
+}
+.side-sign-in-img {
+  background-image: url("../images/login-image/iphone.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-form{
+  background-color: #F5F5F5;
+}
+
+.cover{
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: var(--primary-color);
+  opacity: 0.3;
+
+}
+.login-logo{
+  z-index: 2;
+}
+
+.login-logo::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: var(--primary-color);
+
+}
+
+@media screen and (max-width: 1200px){
+.menu-item-text{
+  display: none;
+}
+}
