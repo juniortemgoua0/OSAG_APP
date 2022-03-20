@@ -3,14 +3,13 @@ class Main {
   constructor() {
     this.bindEvents()
     this.bindDataTable()
-    this.bindUrlWithNavigation()
+    // this.bindUrlWithNavigation()
   }
 
 
   bindEvents() {
     $(document).ready(function () {
       $('.delete').click(Main.deleteProduct)
-
     });
   }
 
@@ -24,7 +23,7 @@ class Main {
           "emptyTable": "Non disponible dans la table",
           "info": "Affichage de _START_ à _END_ entrées sur _TOTAL_",
           "infoEmpty": "Affichage de 0 à 0 sur 0 entrées",
-          "infoFiltered": "(filtré à partir de _MAX_ entrées au total)",
+          "infoFiltered": "(filtré à partir de _MAX_ entrées au total)",
           "infoPostFix": "",
           "thousands": ",",
           "lengthMenu": "Affiche _MENU_ entrées",
