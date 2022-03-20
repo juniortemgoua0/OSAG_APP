@@ -7,7 +7,7 @@ class Database
   public static string $port = '3306';
   public static string $dbName = 'osag';
   public static string $username = 'root';
-  public static string $password = 'root';
+  public static string $password = '';
 
   public static function connect(): PDO
   {

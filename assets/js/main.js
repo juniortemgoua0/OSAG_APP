@@ -105,7 +105,7 @@ class Main {
 
     swalWithBootstrapButtons.fire({
       title: 'Etes vous sure?',
-      text: "Vous ne pourrais pas revenir en arriere!",
+      text: "Vous ne pouvez pas revenir en arrière!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Oui, supprimer!',
@@ -115,7 +115,7 @@ class Main {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire(
           'Supprimer!',
-          'Votre enregistrement a ete supprimer.',
+          'Votre enregistrement a été supprimé.',
           'success'
         )
       } else if (

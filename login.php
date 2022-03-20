@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
+  <?php require "classes/Database.php"; ?>
 <div class="vw-100">
   <div class="row vh-100 w-100">
 
