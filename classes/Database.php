@@ -9,24 +9,24 @@ class Database
   public static string $username = 'root';
   public static string $password = '';
 
-  public function __construct(string $host, string $port, string $dbName, string $username, string $password){
-      $this->host =$host;
-      $this->port = $port;
-      $this->dbName = $dbName;
-      $this->username= $username;
-      $this->password = $password;
-  }
-
   public static function connect(): PDO
   {
-    $pdo = new PDO('mysql:host=' . self::$host . ';port=' . self::$port . ';dbname=' . self::$dbName . ';charset=utf8',
-      self::$username, self::$password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo 'Connexion reussite';
-    return $pdo;
+    try {
+      $pdo = new PDO('mysql:host=' . self::$host . ';port=' . self::$port . ';dbname=' . self::$dbName ,self::$username, self::$password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      echo 'Connexion reussite';
+      return $pdo;
+    }catch (PDOException $exception){
+      echo 'Connexion echoue : ' . $exception->getMessage();
+    }
   }
 
-  public static function query($query, $params = array())
+  /**
+   * @param string $query  represente la requete a executer
+   * @param array $params  Represente le tableau de parametre ou de valeur fournir en drapeau dans la requete
+   * @return array|false|void retourne un tableau de donnees dans le cas ou il s'agirai d'une requete de type SELECT
+   */
+  public static function query(string $query, array $params = array())
   {
     $statement = self::connect()->prepare($query);
     $statement->execute($params);

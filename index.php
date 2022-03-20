@@ -1,5 +1,10 @@
 <?php
-$t = [1,2,3];
+$t = [connect];
+require 'classes/Database.php';
+$query = "SELECT * FROM person";
+echo "<pre>";
+var_dump(Database::query($query));
+echo "</pre>";
 ?>
 
 <!DOCTYPE html>
