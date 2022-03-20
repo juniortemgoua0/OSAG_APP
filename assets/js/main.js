@@ -91,9 +91,7 @@ class Main {
           Main.dispachEventToNavigateUrl('pills-team-tab')
           break
       }
-
     }
-
   }
 
   static deleteProduct() {

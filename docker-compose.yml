@@ -1,28 +1,40 @@
-version : '3'
+version: "2"
 services:
-  mysql:
-    image: mysql:latest
-    container_name: dev_mysql
+  www:
+    build: .
+    ports:
+      - "8001:80"
     volumes:
-      - dbdata:/var/mysql
-    restart: always
+      - ./:/var/www/html/
+    links:
+      - db
+    networks:
+      - default
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: osag
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
+      - persistent:/var/lib/mysql
+    networks:
+      - default
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db:db
+    ports:
+      - "8000:80"
     environment:
       MYSQL_USER: user
       MYSQL_PASSWORD: user
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: default_schema
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: dev_pma
-    links:
-      - mysql
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      PMA_ARBITRARY: 1
-    restart: always
-    ports:
-      - 8183:80
 volumes:
-  dbdata : {}
+  persistent:

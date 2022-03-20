@@ -1,29 +1,32 @@
 <?php
-class Database{
 
-    private $db_name;
+class Database
+{
 
-    private $db_user;
+  public static string $host = 'localhost';
+  public static string $port = '3306';
+  public static string $dbName = 'osag';
+  public static string $username = 'root';
+  public static string $password = 'root';
 
-    private $db_pass;
+  public static function connect(): PDO
+  {
+    $pdo = new PDO('mysql:host=' . self::$host . ';port=' . self::$port . ';dbname=' . self::$dbName . ';charset=utf8',
+      self::$username, self::$password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo 'Connexion reussite';
+    return $pdo;
+  }
 
-    private $db_host;
-
-    private $pdo;
-
-    public function __construct(string $db_name, string $db_user, string $db_pass, string $db_host){
-        $this->db_name = $db_name;
-        $this->db_user = $db_user;
-        $this->db_pass = $db_pass;
-        $this->db_host = $db_host;
+  public static function query($query, $params = array())
+  {
+    $statement = self::connect()->prepare($query);
+    $statement->execute($params);
+    if (explode(' ', $query)[0] == 'SELECT') {
+      $data = $statement->fetchAll();
+      return $data;
     }
-
-    public function getPDO() : PDO {
-        if($this->pdo === null){
-            $this->pdo = new PDO("mysql:dbname=($this->db_name);host=($this->db_host)", $this->db_user, $this->db_pass);
-        }
-
-        return $this->pdo;
-    }
+  }
 }
+
 ?>

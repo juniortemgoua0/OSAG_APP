@@ -1,4 +1,6 @@
-<?php $t = [1,2,3]; ?>
+<?php
+$t = [1,2,3];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +30,7 @@
 
  <?php require "views/sidebar.php" ?>
 
-  <div class="tab-content section" id="pills-tabContent">
+  <div class="tab-content section " id="pills-tabContent">
     <div class="tab-pane fade show active " id="pills-dashboard" role="tabpanel" aria-labelledby="pills-dashboard-tab">
     <?php require "views/dashboard.php" ?>
     </div>
@@ -60,6 +62,9 @@
     <div class="tab-pane fade" id="pills-analytics" role="tabpanel" aria-labelledby="pills-analytics-tab">
       <?php require "views/analytics.php" ?>
     </div>
+  </div>
+  <div class="section d-none">
+    <?php require "views/add-product.php"?>
   </div>
 </div>
 
