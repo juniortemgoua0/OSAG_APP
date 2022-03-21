@@ -1,3 +1,21 @@
+<?php 
+session_start();
+
+require "classes/Database.php";
+require "classes/Utils.php";
+
+if(isset($_POST['username']) ){
+
+  $username =  $_POST['username'];
+  $password = $_POST['password'];
+  $status = Utils::login($username , $password);
+  if($status){
+    header("location:index.php");
+  }
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,7 +29,7 @@
   <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
-  <?php require "classes/Database.php"; ?>
+
 <div class="vw-100">
   <div class="row vh-100 w-100">
 
@@ -23,9 +41,16 @@
       <div class="w-75">
         <span class="sign-in-text ">Sign In</span>
         <p class="mt-3">Bienvenu sur la page de connexion, Veuillez entrer vos informations</p>
-        <form method="post" action="index.php" class="mt-3 " >
-          <input type="text" class="sign-in-input w-100 px-4 my-3" placeholder="Email...">
-          <input type="text" class="sign-in-input w-100 px-4" placeholder="Password...">
+        
+          <?php 
+           if(isset( $_SESSION['error_login']) && !empty( $_SESSION['error_login'])){
+              echo '<div class="alert alert-danger mt-3">'. $_SESSION["error_login"].'</div>'; 
+           } 
+          ?>
+
+        <form method="post" action="" class="mt-3 " >
+          <input type="text" class="sign-in-input w-100 px-4 my-3" name="username" placeholder="Email...">
+          <input type="text" class="sign-in-input w-100 px-4" name="password" placeholder="Password...">
           <div class="form-group my-3">
             <input type="checkbox" id="remember" class="form-check-input">
             <label for="remember" class="form-check-label"> Remember passord</label>

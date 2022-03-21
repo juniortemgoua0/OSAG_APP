@@ -1,20 +1,17 @@
 <?php
-
 class Database
 {
-
   public static  $host = 'localhost';
   public static  $port = '3306';
-  public static  $dbName = 'osag';
+  public static  $dbName = 'ges_stock';
   public static  $username = 'root';
   public static  $password = '';
 
-  public static function connect(): PDO
+  public static function connect() 
   {
     try {
       $pdo = new PDO('mysql:host=' . self::$host . ';port=' . self::$port . ';dbname=' . self::$dbName ,self::$username, self::$password);
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      echo 'Connexion reussite';
       return $pdo;
     }catch (PDOException $exception){
       echo 'Connexion echoue : ' . $exception->getMessage();
