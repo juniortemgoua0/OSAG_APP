@@ -1,10 +1,7 @@
 <?php
-$t = [connect];
+$t = ["connect"];
 require 'classes/Database.php';
-$query = "SELECT * FROM person";
-echo "<pre>";
-var_dump(Database::query($query));
-echo "</pre>";
+Database::connect();
 ?>
 
 <!DOCTYPE html>

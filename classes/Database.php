@@ -3,11 +3,11 @@
 class Database
 {
 
-  public static string $host = 'localhost';
-  public static string $port = '3306';
-  public static string $dbName = 'osag';
-  public static string $username = 'root';
-  public static string $password = '';
+  public static  $host = 'localhost';
+  public static  $port = '3306';
+  public static  $dbName = 'osag';
+  public static  $username = 'root';
+  public static  $password = '';
 
   public static function connect(): PDO
   {
