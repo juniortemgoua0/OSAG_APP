@@ -35,7 +35,7 @@
       </th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="stock-product">
     <?php foreach ($t as $a): ?>
       <tr>
         <td><img src="../assets/images/office-g58d369757_1920.jpg" alt=""></td>
@@ -50,7 +50,7 @@
         </td>
         <td>
           <div>
-            <i class='bx bxs-trash delete fs-4' ></i>
+            <i class='bx bxs-trash delete fs-4' id="1"></i>
             <i class='bx bxs-edit edit fs-4'></i>
           </div>
         </td>
@@ -62,6 +62,7 @@
 
 <div class="head-info p-4" ></div>
 
+<?php if(isset($_SESSION['user']) && $_SESSION['user']['FONCTION']== "directeur"){ ?>
 <section class="home-section">
   <div class="head-section row">
     <h1 class="text-black-50 header-title col-sm-12 col-md-6">Stock en magasin</h1>
@@ -122,4 +123,4 @@
     </tbody>
   </table>
 </section>
-
+<?php } ?>

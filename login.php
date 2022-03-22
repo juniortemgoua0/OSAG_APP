@@ -1,11 +1,9 @@
 <?php 
 session_start();
-
 require "classes/Database.php";
 require "classes/Utils.php";
 
 if(isset($_POST['username']) ){
-
   $username =  $_POST['username'];
   $password = $_POST['password'];
   $status = Utils::login($username , $password);
@@ -43,7 +41,7 @@ if(isset($_POST['username']) ){
         <p class="mt-3">Bienvenu sur la page de connexion, Veuillez entrer vos informations</p>
         
           <?php 
-           if(isset( $_SESSION['error_login']) && !empty( $_SESSION['error_login'])){
+           if(isset( $_SESSION['error_login']) && !empty($_SESSION['error_login'])){
               echo '<div class="alert alert-danger mt-3">'. $_SESSION["error_login"].'</div>'; 
            } 
           ?>

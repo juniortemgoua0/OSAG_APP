@@ -1,5 +1,8 @@
+  <?php 
+   $result_product = Utils::getAllProducts()
+  ?>
+  
   <!-- code formulaire d'ajout a mettre dans un fichier externe -->
-
   <div class="container-form" id="modal">
         <li onclick="document.getElementById('modal').style.display='none'"
       class="w3-button w3-display-topright">x</li>
@@ -57,22 +60,19 @@
     <thead>
     <tr>
       <th>
-        <i class='bx bxl-product-hunt'></i><span>Image</span>
+        <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
       </th>
       <th>
         <i class='bx bxs-spreadsheet'></i>Designation
       </th>
       <th>
-        <i class='bx bxs-spreadsheet'></i>Prix
+        <i class='bx bxs-spreadsheet'></i>Marque
       </th>
       <th>
-        <i class='bx bxs-spreadsheet'></i>Date save
+        <i class='bx bxs-spreadsheet'></i>Categories
       </th>
       <th>
-        <i class='bx bx-calendar-check'></i>Date update
-      </th>
-      <th>
-        <i class='bx bxs-home'></i> Disponibilite
+        <i class='bx bx-calendar-check'></i>Date ajout
       </th>
       <th>
         Action
@@ -80,22 +80,17 @@
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($t as $a): ?>
+    <?php foreach ($result_product as $r): ?>
       <tr>
-        <td><img src="../assets/images/office-g58d369757_1920.jpg" alt=""></td>
-        <td>Ordinateur Portable</td>
-        <td>1000f</td>
-        <td>2022/10/14</td>
-        <td>2022/12/16</td>
-        <td>
-          <div class="state d-flex justify-content-evenly align-items-center"><span class="round_dispo"
-                                                                                    style="background: white"></span><span>Disponible</span>
-          </div>
-        </td>
+        <td><?=$r['ID_P']?></td>
+        <td><?=$r['DESIGNATION']?></td>
+        <td><?=$r['MARQUE']?></td>
+        <td><?=$r['LIBELLE_CAT']?></td>
+        <td> <?=$r['DATE_SAVE']?></td>
         <td>
           <div>
-            <i class='bx bxs-trash delete fs-4' ></i>
-            <i class='bx bxs-edit edit fs-4'></i>
+          <i class='bx bxs-trash delete fs-4'id="delete/produit/<?=$_SESSION['user']['FONCTION']?>/product"></i>
+          <i class='bx bxs-edit edit fs-4'id="edit/produit/<?=$_SESSION['user']['FONCTION']?>/product"></i>
           </div>
         </td>
       </tr>

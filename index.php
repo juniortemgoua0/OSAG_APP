@@ -2,10 +2,23 @@
 session_start() ;
 $t = [1,2,3];
 require 'classes/Database.php';
+require 'classes/Utils.php';
+require "models/User.php";
 
 if(!isset($_SESSION['user'])){
   header("location:login.php");
 }
+
+$userInfo = $_SESSION['user'];
+
+$user = new User($userInfo["ID_UTIL"],$userInfo["NOM"] , $userInfo["PRENOM"] , $userInfo["EMAIL"] , 
+$userInfo["FONCTION"] , $userInfo["NOM_AG"]);
+
+// Recupere toutes les agences 
+$result_agence = Utils::getAgences();
+
+// Recupere toutes les fonctions 
+$result_fonction = Utils::getFonctions();
 
 ?>
 
@@ -65,10 +78,14 @@ if(!isset($_SESSION['user'])){
       <div class="tab-pane fade" id="pills-message" role="tabpanel" aria-labelledby="pills-message-tab">
         <?php require "views/messages.php" ?>
       </div>
-
+     
+      <?php if(isset($_SESSION['user']) &&
+                ($_SESSION['user']['FONCTION']== 'directeur' ||
+                 $_SESSION['user']['FONCTION']== 'boss')){ ?>
       <div class="tab-pane fade" id="pills-team" role="tabpanel" aria-labelledby="pills-team-tab">
         <?php require "views/team.php" ?>
       </div>
+      <?php } ?>
 
       <div class="tab-pane fade" id="pills-analytics" role="tabpanel" aria-labelledby="pills-analytics-tab">
         <?php require "views/analytics.php" ?>

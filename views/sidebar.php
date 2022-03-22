@@ -42,6 +42,9 @@
         <span class="links_name">Total order</span>
       </a>
     </li>
+    <?php if(isset($_SESSION['user']) &&
+                ($_SESSION['user']['FONCTION']== 'directeur' ||
+                 $_SESSION['user']['FONCTION']== 'boss')){ ?>
     <li class="nav-item" id="team">
       <a href="#" class="nav-link" id="pills-team-tab" data-bs-toggle="pill" data-bs-target="#pills-team" type="button"
          role="tab" aria-controls="pills-team" aria-selected="false">
@@ -49,6 +52,7 @@
         <span class="links_name">Team</span>
       </a>
     </li>
+    <?php } ?>
     <li class="nav-item" id="message">
       <a href="#" class="nav-link" id="pills-message-tab" data-bs-toggle="pill" data-bs-target="#pills-message"
          type="button" role="tab" aria-controls="pills-message" aria-selected="false">
@@ -64,7 +68,7 @@
       </a>
     </li>
     <li class="log_out">
-      <a href="#">
+      <a href="app/logout.php">
         <i class='bx bx-log-out'></i>
         <span class="links_name">Log out</span>
       </a>
