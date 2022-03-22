@@ -2,7 +2,7 @@
 
 class Database
 {
-
+    
   public static string $host = 'localhost';
   public static string $port = '3306';
   public static string $dbName = 'osag';
