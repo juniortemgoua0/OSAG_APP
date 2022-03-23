@@ -80,6 +80,7 @@ DROP TABLE IF EXISTS `entrer`;
 CREATE TABLE IF NOT EXISTS `entrer` (
   `ID_P` int(11) NOT NULL,
   `ID_UTIL` int(11) NOT NULL,
+  `QUANTITE` int(11) NOT NULL,
   PRIMARY KEY (`ID_P`,`ID_UTIL`),
   KEY `FK_ENTRER2` (`ID_UTIL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -94,6 +95,7 @@ DROP TABLE IF EXISTS `exposer`;
 CREATE TABLE IF NOT EXISTS `exposer` (
   `ID_P` int(11) NOT NULL,
   `ID_UTIL` int(11) NOT NULL,
+  `QUANTITE` int(11) NOT NULL,
   PRIMARY KEY (`ID_P`,`ID_UTIL`),
   KEY `FK_EXPOSER2` (`ID_UTIL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -137,6 +139,7 @@ DROP TABLE IF EXISTS `retirer`;
 CREATE TABLE IF NOT EXISTS `retirer` (
   `ID_P` int(11) NOT NULL,
   `ID_UTIL` int(11) NOT NULL,
+  `QUANTITE` int(11) NOT NULL,
   PRIMARY KEY (`ID_P`,`ID_UTIL`),
   KEY `FK_RETIRER2` (`ID_UTIL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -145,9 +148,9 @@ CREATE TABLE IF NOT EXISTS `retirer` (
 -- Déchargement des données de la table `retirer`
 --
 
-INSERT INTO `retirer` (`ID_P`, `ID_UTIL`) VALUES
-(2, 1),
-(3, 1);
+INSERT INTO `retirer` (`ID_P`, `ID_UTIL`,`QUANTITE`) VALUES
+(2, 1, 3),
+(3, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -155,18 +158,18 @@ INSERT INTO `retirer` (`ID_P`, `ID_UTIL`) VALUES
 -- Structure de la table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
-CREATE TABLE IF NOT EXISTS `role` (
-  `ID_ROL` int(11) NOT NULL,
-  `ROLE` enum('Directeur','Secretaire') DEFAULT NULL,
-  PRIMARY KEY (`ID_ROL`)
+DROP TABLE IF EXISTS `fonction`;
+CREATE TABLE IF NOT EXISTS `fonction` (
+  `ID_FONCTION` int(11) NOT NULL,
+  `FONCTION` enum('Directeur','Secretaire') DEFAULT NULL,
+  PRIMARY KEY (`ID_FONCTION`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `role`
 --
 
-INSERT INTO `role` (`ID_ROL`, `ROLE`) VALUES
+INSERT INTO `fonction` (`ID_FONCTION`, `FONCTION`) VALUES
 (1, 'Directeur'),
 (2, 'Secretaire');
 
@@ -179,7 +182,7 @@ INSERT INTO `role` (`ID_ROL`, `ROLE`) VALUES
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `ID_UTIL` int(11) NOT NULL,
-  `ID_ROL` int(11) NOT NULL,
+  `ID_FONCTION` int(11) NOT NULL,
   `ID_AG` int(11) NOT NULL,
   `NOM` varchar(50) DEFAULT NULL,
   `PRENOM` varchar(50) DEFAULT NULL,
@@ -190,14 +193,14 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `TELEPHONE` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`ID_UTIL`),
   KEY `FK_APPARTENIR` (`ID_AG`),
-  KEY `FK_ASSOCIATION_6` (`ID_ROL`)
+  KEY `FK_ASSOCIATION_6` (`ID_FONCTION`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`ID_UTIL`, `ID_ROL`, `ID_AG`, `NOM`, `PRENOM`, `EMAIL`, `NUM_CNI`, `VILLE`, `POSTE`, `TELEPHONE`) VALUES
+INSERT INTO `utilisateur` (`ID_UTIL`, `ID_FONCTION`, `ID_AG`, `NOM`, `PRENOM`, `EMAIL`, `NUM_CNI`, `VILLE`, `POSTE`, `TELEPHONE`) VALUES
 (1, 1, 1, 'Brown', 'junior', 'brown@gmail.com', '12345687', 'Douala', 'directeur generale', '674327587'),
 (2, 2, 1, 'Guevou', 'Midrele', 'midrele@gmail.com', '3457842', 'Yaounde', 'Secretaire', '698563412'),
 (3, 2, 2, 'irmeline', 'osag', 'osag@gmail.com', '32467895', 'Bafang', 'secretaire adjoint', '667890434');
@@ -238,7 +241,7 @@ ALTER TABLE `retirer`
 --
 ALTER TABLE `utilisateur`
   ADD CONSTRAINT `FK_APPARTENIR` FOREIGN KEY (`ID_AG`) REFERENCES `agence` (`ID_AG`),
-  ADD CONSTRAINT `FK_ASSOCIATION_6` FOREIGN KEY (`ID_ROL`) REFERENCES `role` (`ID_ROL`);
+  ADD CONSTRAINT `FK_ASSOCIATION_6` FOREIGN KEY (`ID_FONCTION`) REFERENCES `fonction` (`ID_FONCTION`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

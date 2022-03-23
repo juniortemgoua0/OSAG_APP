@@ -271,7 +271,7 @@ table thead th i {
 }
 
 td {
-    text-align: center;
+    text-align: left !important;
 }
 
 td div .bxs-trash {
@@ -375,6 +375,17 @@ table .nan-actif {
     color: #CCA66D;
 }
 
+.btn{
+    background-color: #CCA66D;
+    outline: none;
+    padding:10px 15px;
+    border: none;
+}
+
+.btn:hover{
+    background-color: #f3d2a1;
+}
+
 .file-input__input {
     width: 0.1px;
     height: 0.1px;
@@ -395,7 +406,7 @@ table .nan-actif {
     font-size: 14px;
     padding: 10px 12px;
     width: 350px;
-    background-color: #4245a8;
+    background-color: #333;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
 }
 
@@ -427,8 +438,8 @@ table .nan-actif {
 }
 
 .container-form .content form input {
-    /* width: 350px; */
-    width: 100%;
+    width: 350px;
+    /* width: 100%; */
     height: 45px;
     border: none;
     border-radius: 8px;
@@ -439,6 +450,49 @@ table .nan-actif {
 
 .container-form form input[type=submit] {
     background-color: #CCA66D;
+}
+
+
+/* style settings */
+
+.section-user{
+    padding: 25px 6px;
+}
+
+.form-add{
+    margin: 10px 20px;
+    padding: 10px 0;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(98, 98, 98, 0.1);
+}
+.form-add  .input{
+    width: 70%;
+    display: flex;
+    gap: 25px;
+    margin: auto;
+    
+}
+.form-add  .input input{
+    margin: 15px 0;
+}
+
+.form-add .file-input__label {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+    padding: 12px 12px;
+}
+
+.table-user{
+    margin-top: 25px;
+    
+}
+
+.table-user table td{
+    padding: 12px 0;
+    text-align: left !important;
 }
 
 @media screen and (max-width: 1175px) {

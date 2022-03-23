@@ -1,7 +1,6 @@
 <?php
 class Database
 {
-<<<<<<< HEAD
     
   public static string $host = 'localhost';
   public static string $port = '3306';
@@ -10,15 +9,6 @@ class Database
   public static string $password = '';
 
   public static function connect(): PDO
-=======
-  public static  $host = 'localhost';
-  public static  $port = '3306';
-  public static  $dbName = 'ges_stock';
-  public static  $username = 'root';
-  public static  $password = '';
-
-  public static function connect() 
->>>>>>> 6be8a624ad6ce9928a628976d7fd246eb0e6f7f8
   {
     try {
       $pdo = new PDO('mysql:host=' . self::$host . ';port=' . self::$port . ';dbname=' . self::$dbName ,self::$username, self::$password);

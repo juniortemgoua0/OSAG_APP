@@ -48,7 +48,7 @@ if(isset($_POST['username']) ){
 
         <form method="post" action="" class="mt-3 " >
           <input type="text" class="sign-in-input w-100 px-4 my-3" name="username" placeholder="Email...">
-          <input type="text" class="sign-in-input w-100 px-4" name="password" placeholder="Password...">
+          <input type="password" class="sign-in-input w-100 px-4" name="password" placeholder="Password...">
           <div class="form-group my-3">
             <input type="checkbox" id="remember" class="form-check-input">
             <label for="remember" class="form-check-label"> Remember passord</label>
