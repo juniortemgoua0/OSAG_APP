@@ -10,9 +10,11 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
     <section class="section-user">
         
         <div class="btn-add">
-            <button class="btn btn-primary">New User</button>
+            <h2>Bienvenue sur la section settings</h2>
+            <button class="btn btn-primary add" onclick="document.getElementById('form').style.display='block'">New User</button>
         </div>
-        <div class="form-add">
+        <div class="form-add" id="form">
+            <button class="btn btn-danger" onclick="document.getElementById('form').style.display='none'">X</button>
             <form action="" class="form">
                 <div class="input">
                     <input class="form-control" type="text" placeholder="Nom">
