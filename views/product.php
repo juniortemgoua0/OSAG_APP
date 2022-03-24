@@ -10,7 +10,12 @@
           <form action="" class="form">
               <h1>New Product</h1>
               <input type="text" placeholder="Designation" require><br>
-              <input type="text" placeholder="prix" require><br><br>
+              <input type="text" placeholder="prix" require><br>
+              <input type="text" placeholder="Marque" require><br>
+              <select name="" id="">
+                <option value="select">Slectionner une categorie</option>
+                <option value="">Telephone</option>
+              </select>
               <div class="file-input">
                 <input
                   type="file"

@@ -165,6 +165,11 @@
         } 
        return $status;
     }
+
+
+    public static function InsertImg(){
+      
+    }
  }
 
 ?>

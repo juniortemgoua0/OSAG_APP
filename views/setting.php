@@ -14,7 +14,7 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
             <button class="btn btn-primary add" onclick="document.getElementById('form').style.display='block'">New User</button>
         </div>
         <div class="form-add" id="form">
-            <button class="btn btn-danger" onclick="document.getElementById('form').style.display='none'">X</button>
+            <button class="btn btn-dange" onclick="document.getElementById('form').style.display='none'">X</button>
             <form action="" class="form">
                 <div class="input">
                     <input class="form-control" type="text" placeholder="Nom">
