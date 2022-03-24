@@ -20,6 +20,8 @@ $result_agence = Utils::getAgences();
 // Recupere toutes les fonctions 
 $result_fonction = Utils::getFonctions();
 
+//Recupere toutes les categories
+$result_category = Utils::getAllCategories();
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +98,23 @@ $result_fonction = Utils::getFonctions();
     </div>
   </div>
 
+<script>
+  var modalEditMagasin = document.getElementById('modal-edit-magasin')
+  modalEditMagasin.addEventListener('show.bs.modal', function (event) {
+  var button = event.relatedTarget
+  var recipient = button.getAttribute('data-bs-whatever')
+  var modalBodyInput = modalEditMagasin.querySelector('.modal-body input#recipient-magasin')
+  modalBodyInput.value = recipient
+})
 
+var modalEditStock = document.getElementById('modal-edit-stock')
+modalEditStock.addEventListener('show.bs.modal', function (event) {
+  var button = event.relatedTarget
+  var recipient = button.getAttribute('data-bs-whatever')
+  var modalBodyInput = modalEditStock.querySelector('.modal-body input#recipient-stock')
+  modalBodyInput.value = recipient
+})
+</script>
 </body>
 
 </html>

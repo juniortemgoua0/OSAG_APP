@@ -9,6 +9,42 @@ class Main {
     bindEvents() {
         $(document).ready(function() {
             $('.delete').click((e) => Main.delete(e.currentTarget.id))
+
+            $('#form-utilisateur').submit(function(event) {
+                event.preventDefault();
+                let formData = Main.formBindValue(event.target, "add-utilisateur");
+                console.log(formData)
+            })
+
+            $('#form-produit').submit(function(event) {
+                event.preventDefault()
+                let formData = Main.formBindValue(event.target, "add-produit")
+                console.log(formData)
+            })
+
+            $('#form-stock').submit(function(event) {
+                event.preventDefault()
+                let formData = Main.formBindValue(event.target, "add-stock")
+                console.log(formData)
+            })
+
+            $('#form-magasin').submit(function(event) {
+                event.preventDefault()
+                let formData = Main.formBindValue(event.target, "add-magasin")
+                console.log(formData)
+            })
+
+            $('#form-edit-magasin').submit(function(event) {
+                event.preventDefault()
+                let formData = Main.formBindValue(event.target, "edit-magasin")
+                console.log(formData)
+            })
+
+            $('#form-edit-stock').submit(function(event) {
+                event.preventDefault()
+                let formData = Main.formBindValue(event.target, "edit-stock")
+                console.log(formData)
+            })
         });
     }
 
@@ -49,7 +85,7 @@ class Main {
         if (window.location.href.includes('page')) {
             Main.getNavigationUrl()
         } else {
-            window.history.replaceState({}, '', "?page=dashboard")
+            window.history.replaceState({}, '', "index.php?page=dashboard")
         }
         const menuItems = document.querySelectorAll('.nav-item')
         console.log(menuItems)
@@ -134,7 +170,6 @@ class Main {
                         id: Number.parseInt(id),
                         type: type
                     }
-
                 }).done(function(data) {
                     swalWithBootstrapButtons.fire(
                         'Supprimer!',
@@ -166,6 +201,99 @@ class Main {
         document.querySelector('#' + id).dispatchEvent(evt);
     }
 
+    static formBindValue(form, formType) {
+        let formData = {}
+        let operation = formType.split('-')[0] // add ou edit 
+        let type = formType.split('-')[1] // magasin , stock , utilisateur ou produit 
+        console.log(operation, type)
+        if (operation === "add") {
+            switch (type) {
+                case "utilisateur":
+                    formData = {
+                        nom: form.elements['nom'].value,
+                        prenom: form.elements['prenom'].value,
+                        email: form.elements['email'].value,
+                        password: form.elements['password'].value,
+                        fonction: form.elements['fonction'].value,
+                        telephone: form.elements['telephone'].value,
+                        cni: form.elements['cni'].value,
+                        ville: form.elements['ville'].value,
+                        type: type
+                    }
+                    break
+                case "produit":
+                    formData = {
+                        designation: form.elements['designation'].value,
+                        marque: form.elements['marque'].value,
+                        prix: form.elements['prix'].value,
+                        categorie: form.elements['categorie'].value,
+                        image: form.elements['image'].value,
+                        type: type
+                    }
+                    break
+                case "stock":
+                    formData = {
+                        designation: form.elements['designation'].value,
+                        quantite: form.elements['quantite'].value,
+                        type: type
+                    }
+                    break
+                case "magasin":
+                    formData = {
+                        designation: form.elements['designation'].value,
+                        quantite: form.elements['quantite'].value,
+                        type: type
+                    }
+                    break
+            }
+
+            $.ajax({
+                method: 'GET',
+                url: 'app/insert.php',
+                data: {
+                    formData: formData
+                }
+            }).done(function(data) {
+                alert(data)
+            })
+
+        } else if (operation === "edit") {
+            switch (type) {
+                case "magasin":
+                    formData = {
+                        operation: form.elements['operation'].value,
+                        quantite: form.elements['quantite'].value,
+                        id: form.elements['id-produit'].value,
+                        type: type
+                    }
+                    break
+                case "stock":
+                    formData = {
+                        operation: form.elements['operation'].value,
+                        quantite: form.elements['quantite'].value,
+                        id: form.elements['id-produit'].value,
+                        type: type
+                    }
+                    break
+                default:
+                    break
+            }
+
+            $.ajax({
+                method: 'GET',
+                url: 'app/update.php',
+                data: {
+                    formData: formData
+                }
+            }).done(function(data) {
+                alert(data)
+            })
+        }
+
+        return formData
+    }
+
 }
+
 
 new Main()
