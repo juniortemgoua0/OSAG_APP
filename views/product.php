@@ -88,8 +88,8 @@
         <td> <?=$r['DATE_SAVE']?></td>
         <td>
           <div>
-          <i class='bx bxs-trash delete fs-4'id="delete/produit/<?=$_SESSION['user']['FONCTION']?>/product"></i>
-          <i class='bx bxs-edit edit fs-4'id="edit/produit/<?=$_SESSION['user']['FONCTION']?>/product"></i>
+          <i class='bx bxs-trash delete fs-4'id="delete/produit/<?=$r['ID_P']?>/product"></i>
+          <i class='bx bxs-edit edit fs-4'id="edit/produit/<?=$r['ID_P']?>/product"></i>
           </div>
         </td>
       </tr>

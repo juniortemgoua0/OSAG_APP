@@ -63,6 +63,7 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
             <table>
                 <thead>
                     <tr>
+                        <th>Image</th>
                         <th>Nom</th>
                         <th>Prenom</th>
                         <th>Numero CNI</th>
@@ -75,6 +76,7 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
                 </thead>
                 <tbody>
                     <tr>
+                        <td><img src="../assets/images/office-g58d369757_1920.jpg" alt=""></td>
                         <td>Midrele</td>
                         <td>Guevou</td>
                         <td>27536489</td>
