@@ -1,3 +1,11 @@
+<?php
+$result_entrer = Utils::getEntrer();
+
+$result_exposer = Utils::getExposer();
+
+?> 
+
+
 <section class="home-section">
   <div class="head-section row">
     <h1 class="text-black-50 header-title col-sm-12 col-md-6 order-sm-2 order-md-1">Bienvenue sur notre dashboard</h1>
@@ -68,9 +76,9 @@
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($t as $a): ?>
+    <?php foreach ($result_exposer as $r): ?>
     <tr>
-      <td><img src="../assets/images/office-g58d369757_1920.jpg" alt=""></td>
+      <td>res</td>
       <td>Ordinateur Portable</td>
       <td>1000f</td>
       <td>2022/10/14</td>

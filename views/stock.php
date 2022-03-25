@@ -1,3 +1,15 @@
+<?php 
+
+$resultTotalProductInMagasinn = Utils::getTotalProductInMagasin();
+$resultTotalProductInStock = Utils::getTotalProductInStock();
+
+// echo "<pre>";
+// print_r($result_magasin);
+// echo "</pre>";
+?>
+
+
+
 <section class="home-section">
   <div class="head-section row">
     <h1 class="text-black-50 header-title col-sm-12 col-md-6">Stock en cours</h1>
@@ -12,8 +24,8 @@
   <table class="table ">
     <thead>
       <tr>
-        <th>
-          <i class='bx bxl-product-hunt'></i><span>Image</span>
+      <th>
+          <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
         </th>
         <th>
           <i class='bx bxs-spreadsheet'></i>Designation
@@ -22,10 +34,13 @@
           <i class='bx bxs-spreadsheet'></i>Prix
         </th>
         <th>
-          <i class='bx bxs-spreadsheet'></i>Date save
+          <i class='bx bxs-spreadsheet'></i>Quantite
         </th>
         <th>
-          <i class='bx bx-calendar-check'></i>Date update
+          <i class='bx bx-calendar-check'></i> Marque
+        </th>
+        <th>
+          <i class='bx bx-calendar-check'></i> Categorie
         </th>
         <th>
           <i class='bx bxs-home'></i> Disponibilite
@@ -36,13 +51,14 @@
       </tr>
     </thead>
     <tbody id="stock-product">
-      <?php foreach ($t as $r): ?>
+      <?php foreach ($resultTotalProductInStock as $r): ?>
       <tr>
-        <td class="text-center"><img src="../assets/images/office-g58d369757_1920.jpg" alt=""></td>
-        <td class="text-center">Ordinateur Portable</td>
-        <td class="text-center">1000f</td>
-        <td class="text-center">2022/10/14</td>
-        <td class="text-center">2022/12/16</td>
+      <td><?=$r['ID_P']?></td>
+        <td><?=$r['DESIGNATION']?></td>
+        <td><?=$r['PRIX']?></td>
+        <td><?=$r['SUM_QUANTITE']?></td>
+        <td><?=$r['MARQUE']?></td>
+        <td><?=$r['LIBELLE_CAT']?></td>
         <td class="text-center">
           <div class="state d-flex justify-content-evenly align-items-center"><span class="round_dispo"
               style="background: white"></span><span>Disponible</span>
@@ -86,7 +102,7 @@
             </div>
           </div>
           <div class="col-12 mt-sm-3">
-              <input type="number" class="form-control " id="recipient-stock"  name="id-produit">
+              <input type="number" class="form-control " hidden id="recipient-stock"  name="id-produit">
             </div>
           <div class="btn-action mt-4 d-flex justify-content-end align-items-center">
             <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">Annuler</button>
@@ -114,16 +130,16 @@
           <div class="col-12 row mt-3">
             <div class="col-md-6 col-sm-12 mt-sm-3">
               <label for="stock-add-designation" class="form-label">Designation</label>
-              <select class="form-select" id="stock-add-designation" name="designation">
+              <select class="form-select" id="stock-add-designation" name="designation" required>
                 <option value="">----------</option>
-                <?php foreach ($result_product as $r):?>
+                <?php foreach ($result_magasin as $r):?>
                 <option value="<?=$r['ID_P']?>"><?=$r['DESIGNATION']?></option>
                 <?php endforeach ?>
               </select>
             </div>
             <div class="col-md-6 col-sm-12 mt-sm-3">
               <label for="stock-add-quantite" class="form-label">Quantite</label>
-              <input type="number" class="form-control" id="stock-add-quantite" name="quantite">
+              <input type="number" class="form-control" id="stock-add-quantite" name="quantite" required>
             </div>
           </div>
           <div class="btn-action mt-4 d-flex justify-content-end align-items-center">
@@ -157,7 +173,7 @@
     <thead>
       <tr>
         <th>
-          <i class='bx bxl-product-hunt'></i><span>Image</span>
+          <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
         </th>
         <th>
           <i class='bx bxs-spreadsheet'></i>Designation
@@ -166,10 +182,13 @@
           <i class='bx bxs-spreadsheet'></i>Prix
         </th>
         <th>
-          <i class='bx bxs-spreadsheet'></i>Date save
+          <i class='bx bxs-spreadsheet'></i>Quantite
         </th>
         <th>
-          <i class='bx bx-calendar-check'></i>Date update
+          <i class='bx bx-calendar-check'></i> Marque
+        </th>
+        <th>
+          <i class='bx bx-calendar-check'></i> Categorie
         </th>
         <th>
           <i class='bx bxs-home'></i> Disponibilite
@@ -180,13 +199,14 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($t as $r): ?>
+      <?php foreach ($resultTotalProductInMagasinn as $r): ?>
       <tr>
-        <td><img src="../assets/images/office-g58d369757_1920.jpg" alt=""></td>
-        <td>Ordinateur Portable</td>
-        <td>1000f</td>
-        <td>2022/10/14</td>
-        <td>2022/12/16</td>
+        <td><?=$r['ID_P']?></td>
+        <td><?=$r['DESIGNATION']?></td>
+        <td><?=$r['PRIX']?></td>
+        <td><?=$r['SUM_QUANTITE']?></td>
+        <td><?=$r['MARQUE']?></td>
+        <td><?=$r['LIBELLE_CAT']?></td>
         <td>
           <div class="state d-flex justify-content-evenly align-items-center"><span class="round_dispo"
               style="background: white"></span><span>Disponible</span>
@@ -229,7 +249,7 @@
             </div>
           </div>
           <div class="col-12 mt-sm-3">
-              <input type="number" class="form-control " id="recipient-magasin"  name="id-produit">
+              <input type="number" class="form-control " hidden id="recipient-magasin"  name="id-produit">
             </div>
           <div class="btn-action mt-4 d-flex justify-content-end align-items-center">
             <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">Annuler</button>
@@ -257,7 +277,7 @@
           <div class="col-12 row mt-3">
             <div class="col-md-6 col-sm-12 mt-sm-3">
               <label for="magasin-add-designation" class="form-label">Designation</label>
-              <select class="form-select" id="magasin-add-designation" name="designation">
+              <select class="form-select" id="magasin-add-designation" name="designation" required>
                 <option value="">----------</option>
                 <?php foreach ($result_product as $r):?>
                 <option value="<?=$r['ID_P']?>"><?=$r['DESIGNATION']?></option>
@@ -266,7 +286,7 @@
             </div>
             <div class="col-md-6 col-sm-12 mt-sm-3">
               <label for="magasin-add-quantite" class="form-label">Quantite</label>
-              <input type="number" class="form-control" id="magasin-add-quantite" name="quantite">
+              <input type="number" class="form-control" id="magasin-add-quantite" name="quantite" required>
             </div>
           </div>
           <div class="btn-action mt-4 d-flex justify-content-end align-items-center">
