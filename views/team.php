@@ -162,13 +162,13 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
       <tbody>
         <?php foreach ($result_team as $r): ?>
         <tr>
-          <td><?=$r['ID_UTIL']?></td>
-          <td><?=$r['NOM']?></td>
-          <td><?=$r['PRENOM']?></td>
-          <td><?=$r['EMAIL']?></td>
-          <td><?=$r['FONCTION']?></td>
-          <td><?=$r['DATE_SAVE']?></td>
-          <td>
+          <td class="text-center"><?=$r['ID_UTIL']?></td>
+          <td class="text-center"><?=$r['NOM']?></td>
+          <td class="text-center"><?=$r['PRENOM']?></td>
+          <td class="text-center"><?=$r['EMAIL']?></td>
+          <td class="text-center"><?=$r['FONCTION']?></td>
+          <td class="text-center"><?=$r['DATE_SAVE']?></td>
+          <td class="text-center">
             <div>
               <i class='bx bxs-trash delete fs-4' id="delete/utilisateur/<?=$r['ID_UTIL']?>/team"></i>
               <i class='bx bxs-edit edit fs-4' id="edit/utilisateur/<?=$r['ID_UTIL']?>/team"></i>

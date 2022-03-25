@@ -87,7 +87,7 @@
   </section>
 
   <section class="data ">
-    <table class="table text-center">
+    <table class="table ">
       <thead>
         <tr>
           <th>
@@ -113,12 +113,12 @@
       <tbody>
         <?php foreach ($result_product as $r): ?>
         <tr>
-          <td><?=$r['ID_P']?></td>
-          <td><?=$r['DESIGNATION']?></td>
-          <td><?=$r['MARQUE']?></td>
-          <td><?=$r['LIBELLE_CAT']?></td>
-          <td> <?=$r['DATE_SAVE']?></td>
-          <td>
+          <td class="text-center"><?=$r['ID_P']?></td>
+          <td class="text-center"><?=$r['DESIGNATION']?></td>
+          <td class="text-center"><?=$r['MARQUE']?></td>
+          <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
+          <td class="text-center"> <?=$r['DATE_SAVE']?></td>
+          <td class="text-center">
             <div>
               <i class='bx bxs-trash delete fs-4' id="delete/produit/<?=$r['ID_P']?>/product"></i>
               <i class='bx bxs-edit edit fs-4' id="edit/produit/<?=$r['ID_P']?>/product"></i>

@@ -8,6 +8,7 @@ if(isset($_POST['username']) ){
   $password = $_POST['password'];
   $status = Utils::login($username , $password);
   if($status){
+    unset($_SESSION['error_login']);
     header("location:index.php");
   }
 }

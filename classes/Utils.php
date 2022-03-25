@@ -98,20 +98,24 @@ class Utils {
 
 
     public static function getEntrer(){
-      $sql = " SELECT * FROM entrer AS e , produit AS p , utilisateur AS u , categorie AS c 
+      $sql = "SELECT e.ID_ENTRER , p.DESIGNATION , e.QUANTITE , e.QUANTITE_EN_COURS , p.MARQUE , c.LIBELLE_CAT , e.DATE_AJOUT FROM entrer AS e , produit AS p , utilisateur AS u , categorie AS c 
       WHERE e.ID_P = p.ID_P 
-      AND u.ID_UTIL = E.ID_UTIL
-      AND p.ID_CAT = c.ID_CAT";
-      return Database::query($sql);
+      AND  e.ID_UTIL = u.ID_UTIL 
+      AND p.ID_CAT = c.ID_CAT
+      AND u.ID_AG = ? 
+      ORDER BY e.ID_ENTRER";
+      return Database::query($sql ,  [$_SESSION['user']['ID_AG']]);
     }
 
 
     public static function getExposer(){
-      $sql = " SELECT * FROM exposer AS e , produit AS p , utilisateur AS u , categorie AS c 
+      $sql = "SELECT e.ID_EXPOSER , p.DESIGNATION , e.QUANTITE , e.QUANTITE_EN_COURS , p.MARQUE , c.LIBELLE_CAT , e.DATE_AJOUT FROM exposer AS e , produit AS p , utilisateur AS u , categorie AS c 
       WHERE e.ID_P = p.ID_P 
-      AND u.ID_UTIL = E.ID_UTIL
-      AND p.ID_CAT = c.ID_CAT";
-      return Database::query($sql);
+      AND  e.ID_UTIL = u.ID_UTIL 
+      AND p.ID_CAT = c.ID_CAT
+      AND u.ID_AG = ? 
+      ORDER BY e.ID_EXPOSER";
+      return Database::query($sql , [$_SESSION['user']['ID_AG']]);
     }
 
     public static function getTotalProductInMagasin(){

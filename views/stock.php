@@ -1,6 +1,6 @@
 <?php 
 
-$resultTotalProductInMagasinn = Utils::getTotalProductInMagasin();
+$resultTotalProductInMagasin = Utils::getTotalProductInMagasin();
 $resultTotalProductInStock = Utils::getTotalProductInStock();
 
 // echo "<pre>";
@@ -54,11 +54,11 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
       <?php foreach ($resultTotalProductInStock as $r): ?>
       <tr>
       <td><?=$r['ID_P']?></td>
-        <td><?=$r['DESIGNATION']?></td>
-        <td><?=$r['PRIX']?></td>
-        <td><?=$r['SUM_QUANTITE']?></td>
-        <td><?=$r['MARQUE']?></td>
-        <td><?=$r['LIBELLE_CAT']?></td>
+        <td class="text-center"><?=$r['DESIGNATION']?></td>
+        <td class="text-center"><?=$r['PRIX']?></td>
+        <td class="text-center"><?=$r['SUM_QUANTITE']?></td>
+        <td class="text-center"><?=$r['MARQUE']?></td>
+        <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
         <td class="text-center">
           <div class="state d-flex justify-content-evenly align-items-center"><span class="round_dispo"
               style="background: white"></span><span>Disponible</span>
@@ -132,7 +132,7 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
               <label for="stock-add-designation" class="form-label">Designation</label>
               <select class="form-select" id="stock-add-designation" name="designation" required>
                 <option value="">----------</option>
-                <?php foreach ($result_magasin as $r):?>
+                <?php foreach ($resultTotalProductInMagasin as $r):?>
                 <option value="<?=$r['ID_P']?>"><?=$r['DESIGNATION']?></option>
                 <?php endforeach ?>
               </select>
@@ -199,20 +199,20 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($resultTotalProductInMagasinn as $r): ?>
+      <?php foreach ($resultTotalProductInMagasin as $r): ?>
       <tr>
-        <td><?=$r['ID_P']?></td>
-        <td><?=$r['DESIGNATION']?></td>
-        <td><?=$r['PRIX']?></td>
-        <td><?=$r['SUM_QUANTITE']?></td>
-        <td><?=$r['MARQUE']?></td>
-        <td><?=$r['LIBELLE_CAT']?></td>
-        <td>
+        <td class="text-center"><?=$r['ID_P']?></td>
+        <td class="text-center"><?=$r['DESIGNATION']?></td>
+        <td class="text-center"><?=$r['PRIX']?></td>
+        <td class="text-center"><?=$r['SUM_QUANTITE']?></td>
+        <td class="text-center"><?=$r['MARQUE']?></td>
+        <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
+        <td class="text-center">
           <div class="state d-flex justify-content-evenly align-items-center"><span class="round_dispo"
               style="background: white"></span><span>Disponible</span>
           </div>
         </td>
-        <td>
+        <td class="text-center">
           <div>
             <i class='bx bxs-trash delete fs-4' id="delete/magasin/<?=$r['ID_P']?>/product"></i>
             <i class='bx bxs-edit edit fs-4' data-bs-whatever="<?=$r?>" data-bs-toggle="modal" data-bs-target="#modal-edit-magasin"></i>
