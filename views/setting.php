@@ -34,7 +34,7 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
                         <input
                           type="file"
                           name="file-input"
-                          id="file-input"
+                         
                           class="file-input__input"
                         />
                         <label class="file-input__label" for="file-input">
@@ -91,7 +91,6 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
                                 <i class='bx bxs-edit edit fs-4'></i>
                             </div>
                         </td>
-                        
                     </tr>
                 </tbody>
             </table>

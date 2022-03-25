@@ -375,18 +375,22 @@ table .nan-actif {
     color: #CCA66D;
 }
 
+<<<<<<< HEAD
 .container-form form input{
     padding: 0 8px;
 }
 
 .btn{
+=======
+.btn {
+>>>>>>> 42a3aeb298e15ff41f6c2c8f4e13c372940011e9
     background-color: #CCA66D;
     outline: none;
-    padding:10px 15px;
+    padding: 10px 15px;
     border: none;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #f3d2a1;
 }
 
@@ -459,11 +463,11 @@ table .nan-actif {
 
 /* style settings */
 
-.section-user{
+.section-user {
     padding: 25px 6px;
 }
 
-.form-add{
+.form-add {
     display: none;
     margin: 10px 20px;
     padding: 10px 0;
@@ -472,14 +476,15 @@ table .nan-actif {
     transform: translateY(12px);
     transition: all .6s ease;
 }
-.form-add  .input{
+
+.form-add .input {
     width: 70%;
     display: flex;
     gap: 25px;
     margin: auto;
-    
 }
-.form-add  .input input{
+
+.form-add .input input {
     margin: 15px 0;
 }
 
@@ -492,23 +497,28 @@ table .nan-actif {
     padding: 12px 12px;
 }
 
-.table-user{
+.table-user {
     margin-top: 25px;
     padding: 15px 6px;
     background: #FFFFFF;
-/* Gray/100 */
+    /* Gray/100 */
     border: 1px solid #F2F3F4;
     box-sizing: border-box;
     box-shadow: 0px 10px 20px rgba(0, 88, 221, 0.1);
     border-radius: 8px;
-    
 }
+<<<<<<< HEAD
 .btn-dange{
+=======
+
+.btn-danger {
+>>>>>>> 42a3aeb298e15ff41f6c2c8f4e13c372940011e9
     position: absolute;
     left: 92%;
     background-color: rgb(245, 110, 110);
 }
 
+<<<<<<< HEAD
 .btn-danger{
     margin-right:12px !important;
 }
@@ -517,10 +527,13 @@ table .nan-actif {
 }
 
 .btn-add{
+=======
+.btn-add {
+>>>>>>> 42a3aeb298e15ff41f6c2c8f4e13c372940011e9
     margin-left: 16px;
 }
 
-.table-user table td{
+.table-user table td {
     padding: 12px 0;
     text-align: left !important;
 }

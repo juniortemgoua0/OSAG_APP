@@ -5,7 +5,7 @@ session_start();
 
   $id = $_GET['id'];
   $type = $_GET['type'];
-  Utils::delete($type,$id,$_SESSION['user']['ID_UTIL']);
-  // echo "supprimer"; 
+
+  echo Utils::delete($type,$id,$_SESSION['user']['ID_UTIL']);
 
 ?>

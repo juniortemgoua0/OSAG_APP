@@ -91,6 +91,10 @@
       return Database::query($sql);
     }
 
+    public static function getAllCategories(): array {
+      $sql = "SELECT * FROM categorie" ;
+      return Database::query($sql);
+    }
     /**
      * Undocumented function
      *
@@ -103,6 +107,32 @@
       Database::query($sql, $product);
     }
 
+    public static function insert(string $type , array $data){
+      $sql = '';
+      $feedback = "" ;
+      switch ($type){
+        case "produit" :
+          $sql = "INSERT INTO produit(ID_CAT , DESIGNATION , MARQUE , QUANTITE , PRIX)
+                  VALUES(? , ? , ? , ? , ? )";
+          $feedback = 
+                    break;
+          case "utilisateur" :
+            $sql = "INSERT INTO utilisateur(ID_AG , NOM , PRENOM , EMAIL , NUM_CNI , VILLE , TELEPHONE, PASSWORD , ID_FONCTION)
+            VALUES(? , ? , ? , ? , ?, ? , ? , ? , ?)";
+            break;
+            case "stock":
+              $sql = "INSERT INTO exposer(ID_P , ID_UTIL , QUANTITE)
+              VALUES(? , ? , ?  )";
+              break;
+            case "magasin" : 
+              $sql = "INSERT INTO ajouter(ID_P , ID_UTIL  QUANTITE)
+              VALUES(? , ? , ? )";
+             break;
+      }
+      Database::query($sql , $data);
+      
+    } 
+
     /**
      * Undocumented function
      *
@@ -112,17 +142,26 @@
      * @return void
      */
     public static function delete(string $type , int $id ,int $id_user)
-    {
-      $sql = '';
-       switch ($type){
-         case 'utilisateur':
-          $sql = "UPDATE utilisateur SET STATUT = 1 WHERE ID_UTIL = ? ";
-          break;
-         case 'produit':
-          $sql = "UPDATE produit SET STATUT = 1 WHERE ID_P = ? ";
-          break;
-       }
-       Database::query($sql , [$id]);
+    {  
+      $feedback = '' ; 
+      if($_SESSION['user']['FONCTION']== "directeur" || $_SESSION['user']['FONCTION']== "boss"){
+        $sql = '';
+        switch ($type){
+          case 'utilisateur':
+           $sql = "UPDATE utilisateur SET STATUT = 1 WHERE ID_UTIL = ? ";
+           $feedback = "Utilisateur supprimer avec succes";
+           break;
+          case 'produit':
+           $sql = "UPDATE produit SET STATUT = 1 WHERE ID_P = ? ";
+           $feedback = "Produit supprimer avec succes";
+           break;
+        }
+        Database::query($sql , [$id]);
+        return $feedback;
+      }else {
+        return "Vous ne disposez pas des droit requis pour supprimer cet element ";
+      }
+     
     }
 
     /**
@@ -137,8 +176,8 @@
      * @param integer $quantite  la quantite a toucher 
      * @return string message de feedback
      */
-    public function updateProduct( string $type , string $operation ,
-     int $id_product, int $id_user , int $quantite) : string
+    public static function update( string $type , string $operation ,
+     int $id_product, int $quantite) : string
      {
        $sql = "";
        $status = "L'operation a echoue";
@@ -146,21 +185,21 @@
           if($operation == "ajout"){
             $sql = "UPDATE " ;
             $status = "Operation effectuer avec succes" ;
-          }else{
+          }else if($operation == "retrait"){
             $sql = " UPDATE ";
             $status = "Operation effectuer avec succes" ;
           }
-          Database::query($sql , [$id_product , $id_user , $quantite]);
+          Database::query($sql , [$id_product , $quantite]);
           return $status;
-        }else{
+        }else if($type == "stock"){
           if($operation == "ajout"){
             $sql = "UPDATE " ;
             $status = "Operation effectuer avec succes" ;
-          }else{
+          }else if ($operation == "retrait"){
             $sql = " UPDATE ";
             $status = "Operation effectuer avec succes" ;
           }
-          Database::query($sql , [$id_product , $id_user , $quantite]);
+          Database::query($sql , [$id_product , $quantite]);
           return $status;
         } 
        return $status;

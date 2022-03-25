@@ -4,7 +4,7 @@ class Database
     
   public static string $host = 'localhost';
   public static string $port = '3306';
-  public static string $dbName = 'osag';
+  public static string $dbName = 'ges_stock';
   public static string $username = 'root';
   public static string $password = '';
 
@@ -26,7 +26,7 @@ class Database
    */
   public static function query(string $query, array $params = array())
   {
-    $statement = self::connect()->prepare($query);
+    $statement = self::connect()?->prepare($query);
     $statement->execute($params);
     if (explode(' ', $query)[0] == 'SELECT') {
       $data = $statement->fetchAll();
