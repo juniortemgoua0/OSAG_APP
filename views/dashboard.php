@@ -27,25 +27,25 @@ $result_exposer = Utils::getExposer();
     <div class=" content-card col-sm-1 col-md-4 col-lg-3 ">
       <div class="head-card h-100">
         <li><i class='bx bx-cart-alt cart'></i></li>
-        <p>Quantite de produits du stock en cours 23/400</p>
+        <p>Quantité de produits du stock en cours 23/400</p>
       </div>
     </div>
     <div class=" content-card col-sm-1 col-md-4 col-lg-3 ">
       <div class="head-card h-100">
         <li><i class='bx bx-cart-alt cart'></i></li>
-        <p>cle de produits du stock de la secretaire cours 60/100</p>
+        <p>Quantité de produits du stock de la secretaire en cours 60/100</p>
       </div>
     </div>
     <div class=" content-card col-sm-1 col-md-4 col-lg-3">
       <div class="head-card h-100">
         <li><i class='bx bxs-cart-add cart two'></i></li>
-        <p>Quantite de produits du stock en Entree 600/900</p>
+        <p>Quantité de produits du stock en Entrée 600/900</p>
       </div>
     </div>
     <div class=" content-card col-sm-1 col-md-4 col-lg-3 ">
       <div class="head-card h-100">
         <li><i class='bx bx-down-arrow-alt down'></i></li>
-        <p>Quantite de produits du stock en Sortie 1k/2k</p>
+        <p>Quantité de produits du stock en Sortie 1k/2k</p>
       </div>
     </div>
   </div>

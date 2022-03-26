@@ -10,6 +10,10 @@ class Main {
         $(document).ready(function() {
             $('.delete').click((e) => Main.delete(e.currentTarget.id))
 
+            $('.edit').click((e) => Main.edit(e.currentTarget.id))
+
+
+
             $('#form-utilisateur').submit(function(event) {
                 event.preventDefault();
                 let formData = Main.formBindValue(event.target, "add-utilisateur");
@@ -147,6 +151,20 @@ class Main {
      * @param {number} id  represente l'identifiant du produit en cours de suppression 
      * @param {string} type represente le type de stock sur lequel l'operation en entrain d'etre effectuer
      */
+
+    static edit(type_id) {
+        let info = type_id.split("/");
+        let id = info[0]
+        let page= info[1]
+        
+        switch(type){
+            case "product":
+                break;
+            case 'team':
+                break;
+        }
+    }
+
     static delete(type_id) {
         let info = type_id.split("/")
         let id = info[2]

@@ -375,15 +375,11 @@ table .nan-actif {
     color: #CCA66D;
 }
 
-<<<<<<< HEAD
 .container-form form input{
     padding: 0 8px;
 }
 
 .btn{
-=======
-.btn {
->>>>>>> 42a3aeb298e15ff41f6c2c8f4e13c372940011e9
     background-color: #CCA66D;
     outline: none;
     padding: 10px 15px;
@@ -468,7 +464,7 @@ table .nan-actif {
 }
 
 .form-add {
-    display: none;
+    /* display: none; */
     margin: 10px 20px;
     padding: 10px 0;
     background: #FFFFFF;
@@ -507,18 +503,13 @@ table .nan-actif {
     box-shadow: 0px 10px 20px rgba(0, 88, 221, 0.1);
     border-radius: 8px;
 }
-<<<<<<< HEAD
-.btn-dange{
-=======
 
-.btn-danger {
->>>>>>> 42a3aeb298e15ff41f6c2c8f4e13c372940011e9
+.btn-dange {
     position: absolute;
     left: 92%;
     background-color: rgb(245, 110, 110);
 }
 
-<<<<<<< HEAD
 .btn-danger{
     margin-right:12px !important;
 }
@@ -527,9 +518,6 @@ table .nan-actif {
 }
 
 .btn-add{
-=======
-.btn-add {
->>>>>>> 42a3aeb298e15ff41f6c2c8f4e13c372940011e9
     margin-left: 16px;
 }
 

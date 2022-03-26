@@ -11,10 +11,10 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
         
         <div class="btn-add">
             <h2>Bienvenue sur la section settings</h2>
-            <button class="btn btn-primary add" onclick="document.getElementById('form').style.display='block'">New User</button>
+            <button class="btn btn-primary add" >Modifier informations</button>
         </div>
         <div class="form-add" id="form">
-            <button class="btn btn-dange" onclick="document.getElementById('form').style.display='none'">X</button>
+            <button class="btn btn-dange" >X</button>
             <form action="" class="form">
                 <div class="input">
                     <input class="form-control" type="text" placeholder="Nom">
@@ -59,42 +59,7 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
                 </div>
             </form>
         </div>
-        <div class="table-user">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Numero CNI</th>
-                        <th>Telephone</th>
-                        <th>Email</th>
-                        <th>Ville</th>
-                        <th>Date Save</th>
-                        <th>Fonction</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="../assets/images/office-g58d369757_1920.jpg" alt=""></td>
-                        <td>Midrele</td>
-                        <td>Guevou</td>
-                        <td>27536489</td>
-                        <td>653769809</td>
-                        <td>midrele@gmail.com</td>
-                        <td>douala</td>
-                        <td>2022/11/23 12h:50</td>
-                        <td>Directeur</td>
-                        <td>
-                            <div>
-                                <i class='bx bxs-trash delete fs-4' ></i>
-                                <i class='bx bxs-edit edit fs-4'></i>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+       
     </section>
 
 

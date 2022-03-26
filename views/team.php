@@ -120,7 +120,77 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
   </div>
 
   <!-- fin code formulaire d'ajout produit -->
+  <!-- modal edition utilisateur -->
+  <div class="modal fade" id="modal-Editutilisateur" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Nouveau utilisateur</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-Editutilisateur" class="form col">
+            <div class="col-12 row mt-3">
+              <div class="col-md-6 col-sm-12 mt-sm-3">
+                <label for="prenom" class="form-label">Nom</label>
+                <input type="text" class="form-control" name="nom" placeholder="" required>
+              </div>
+              <div class="col-md-6 col-sm-12 mt-sm-3">
+                <label for="edit_utilisateur_prenom" class="form-label">Prenom</label>
+                <input type="text" class="form-control" name="prenom" id="edit_utilisateur_prenom" placeholder="" required>
+              </div>
+            </div>
 
+            <div class="col-12 mt-3">
+              <label for="edit_utilisateur_email" class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Email" name="email" id="edit_utilisateur_email"
+                required>
+            </div>
+
+            <div class="col-12 mt-3">
+              <label for="edit_utilisateur_password" class="form-label">Mot de passe</label>
+              <input type="text" class="form-control" name="password" id="edit_utilisateur_password" required>
+            </div>
+
+            <div class="col-12 row mt-3">
+              <div class="col-md-6 col-sm-12 mt-sm-3">
+                <label for="edit_utilisateur_cni" class="form-label">Numero CNI</label>
+                <input type="text" class="form-control" id="edit_utilisateur_cni" name="cni" placeholder="" required>
+              </div>
+              <div class="col-md-6 col-sm-12 mt-sm-3">
+                <label for="edit_utilisateur_telephone" class="form-label">Telephone</label>
+                <input type="text" class="form-control" id="edit_utilisateur_telephone" name="telephone"
+                  placeholder="" required>
+              </div>
+            </div>
+
+            <div class="col-12 row mt-3">
+              <div class="col-md-6 col-sm-12 mt-sm-3">
+                <label for="edit_utilisateur_fonction" class="form-label">Fonction</label>
+                <select class="form-select" id="edit_utilisateur_fonction" name="fonction" required></br>
+                  <option>---------</option>
+                  <?php foreach($result_fonction as $r): ?>
+                  <option value="<?=$r["ID_FONCTION"]?>"><?=$r['FONCTION']?></option>;
+                  <?php endforeach?>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-12 mt-sm-3">
+                <label for="edit_utilisateur_ville" class="form-label">Ville</label>
+                <input type="text" class="form-control" id="edit_utilisateur_ville" name="ville" placeholder="" required>
+              </div>
+            </div>
+
+            <div class="btn-action mt-4">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal edition -->
   <section class="home-section">
     <div class="head-section row">
       <h1 class="text-black-50 header-title col-sm-12 col-md-6">Liste des utilisateus</h1>
@@ -171,7 +241,7 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
           <td class="text-center">
             <div>
               <i class='bx bxs-trash delete fs-4' id="delete/utilisateur/<?=$r['ID_UTIL']?>/team"></i>
-              <i class='bx bxs-edit edit fs-4' id="edit/utilisateur/<?=$r['ID_UTIL']?>/team"></i>
+              <i class='bx bxs-edit edit fs-4' id="<?=$r['ID_UTIL']?>/team"  data-bs-target="#modal-Editutilisateur" data-bs-toggle="modal"></i>
             </div>
           </td>
         </tr>
