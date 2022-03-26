@@ -50,53 +50,11 @@ $result_exposer = Utils::getExposer();
     </div>
   </div>
 </section>
-<section class="data">
-  <h3 class="my-3">Historique des produits exposees en boutique</h3>
-  <table class="table text-center">
-    <thead>
-    <tr>
-      <th>
-        <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
-      </th>
-      <th>
-        <i class='bx bxs-spreadsheet'></i>Designation
-      </th>
-      <th>
-        <i class='bx bxs-spreadsheet'></i>Quantite
-      </th>
-      <th>
-        <i class='bx bx-calendar-check'></i>Quantite restante
-      </th>
-      <th>
-        <i class='bx bxs-home'></i> Marque
-      </th>
-      <th>
-        <i class='bx bxs-home'></i> Categorie
-      </th>
-      <th>
-        <i class='bx bxs-home'></i> Date d'ajout
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($result_exposer as $r): ?>
-    <tr>
-      <td class="text-center"><?=$r['ID_EXPOSER']?></td>
-      <td class="text-center"><?=$r['DESIGNATION']?></td>
-      <td class="text-center"><?=$r['QUANTITE']?></td>
-      <td class="text-center"><?=$r['QUANTITE_EN_COURS']?></td>
-      <td class="text-center"><?=$r['MARQUE']?></td>
-      <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
-      <td class="text-center"><?=$r['DATE_AJOUT']?></td>
-    </tr>
-    <?php endforeach; ?>
-    </tbody>
-  </table>
-</section>
+
 
 <?php if(isset($_SESSION['user']) && $_SESSION['user']['FONCTION'] == "directeur"){ ?>
 <section class="data">
-  <h3 class="my-3">Historique des produits ajouter en magasin</h3>
+  <h3 class="my-3">Historique des produits entrés</h3>
   <table class="table text-center">
     <thead>
     <tr>
@@ -139,3 +97,91 @@ $result_exposer = Utils::getExposer();
   </table>
 </section>
 <?php } ?>
+
+<section class="data">
+  <h3 class="my-3">Historique des produits exposés </h3>
+  <table class="table text-center">
+    <thead>
+    <tr>
+      <th>
+        <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
+      </th>
+      <th>
+        <i class='bx bxs-spreadsheet'></i>Designation
+      </th>
+      <th>
+        <i class='bx bxs-spreadsheet'></i>Quantite
+      </th>
+      <th>
+        <i class='bx bx-calendar-check'></i>Quantite restante
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Marque
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Categorie
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Date d'ajout
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($result_exposer as $r): ?>
+    <tr>
+      <td class="text-center"><?=$r['ID_EXPOSER']?></td>
+      <td class="text-center"><?=$r['DESIGNATION']?></td>
+      <td class="text-center"><?=$r['QUANTITE']?></td>
+      <td class="text-center"><?=$r['QUANTITE_EN_COURS']?></td>
+      <td class="text-center"><?=$r['MARQUE']?></td>
+      <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
+      <td class="text-center"><?=$r['DATE_AJOUT']?></td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+</section>
+
+<section class="data">
+  <h3 class="my-3">Historique des produits sortis</h3>
+  <table class="table text-center">
+    <thead>
+    <tr>
+      <th>
+        <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
+      </th>
+      <th>
+        <i class='bx bxs-spreadsheet'></i>Designation
+      </th>
+      <th>
+        <i class='bx bxs-spreadsheet'></i>Quantite
+      </th>
+      <th>
+        <i class='bx bx-calendar-check'></i>Quantite restante
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Marque
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Categorie
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Date d'ajout
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($result_entrer as $r): ?>
+    <tr>
+      <td class="text-center"><?=$r['ID_ENTRER']?></td>
+      <td class="text-center"><?=$r['DESIGNATION']?></td>
+      <td class="text-center"><?=$r['QUANTITE']?></td>
+      <td class="text-center"><?=$r['QUANTITE_EN_COURS']?></td>
+      <td class="text-center"><?=$r['MARQUE']?></td>
+      <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
+      <td class="text-center"><?=$r['DATE_AJOUT']?></td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+</section>

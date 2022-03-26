@@ -35,13 +35,13 @@
         <span class="links_name">Stocks</span>
       </a>
     </li>
-    <li class="nav-item" id="total-order">
+    <!-- <li class="nav-item" id="total-order">
       <a href="#" class="nav-link" id="pills-totalOrder-tab" data-bs-toggle="pill" data-bs-target="#pills-totalOrder"
          type="button" role="tab" aria-controls="pills-totalOrder" aria-selected="false">
         <i class='bx bx-book-alt'></i>
         <span class="links_name">Total order</span>
       </a>
-    </li>
+    </li> -->
     <?php if(isset($_SESSION['user']) &&
                 ($_SESSION['user']['FONCTION']== 'directeur' ||
                  $_SESSION['user']['FONCTION']== 'boss')){ ?>

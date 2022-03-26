@@ -12,8 +12,10 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
 
 <section class="home-section">
   <div class="head-section row">
-    <h1 class="text-black-50 header-title col-sm-12 col-md-6">Stock en cours</h1>
+    <h1 class="text-black-50 header-title col-sm-12 col-md-6">Stock exposé</h1>
     <div class="col-sm-12 col-md-6 mt-sm-3 d-flex justify-content-md-end align-items-center">
+    <a href="#" data-bs-target="#modal-stock" data-bs-toggle="modal"><button class="btn primary-btn"> <i
+            class="bi bi-plus-lg fs-5"></i> Sortie de stock</button></a>
       <a href="#" data-bs-target="#modal-stock" data-bs-toggle="modal"><button class="btn primary-btn"> <i
             class="bi bi-plus-lg fs-5"></i> Ajout au stock</button></a>
     </div>
