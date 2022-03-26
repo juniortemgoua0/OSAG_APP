@@ -14,9 +14,9 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
   <div class="head-section row">
     <h1 class="text-black-50 header-title col-sm-12 col-md-6">Stock exposé</h1>
     <div class="col-sm-12 col-md-6 mt-sm-3 d-flex justify-content-md-end align-items-center">
-    <a href="#" data-bs-target="#modal-stock" data-bs-toggle="modal"><button class="btn primary-btn"> <i
+      <a href="#" class="m-2" data-bs-target="#modal-out-stock" data-bs-toggle="modal"><button class="btn primary-btn"> <i
             class="bi bi-plus-lg fs-5"></i> Sortie de stock</button></a>
-      <a href="#" data-bs-target="#modal-stock" data-bs-toggle="modal"><button class="btn primary-btn"> <i
+      <a href="#" class="m-2" data-bs-target="#modal-stock" data-bs-toggle="modal"><button class="btn primary-btn"> <i
             class="bi bi-plus-lg fs-5"></i> Ajout au stock</button></a>
     </div>
   </div>
@@ -26,7 +26,7 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
   <table class="table ">
     <thead>
       <tr>
-      <th>
+        <th>
           <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
         </th>
         <th>
@@ -55,7 +55,7 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
     <tbody id="stock-product">
       <?php foreach ($resultTotalProductInStock as $r): ?>
       <tr>
-      <td><?=$r['ID_P']?></td>
+        <td><?=$r['ID_P']?></td>
         <td class="text-center"><?=$r['DESIGNATION']?></td>
         <td class="text-center"><?=$r['PRIX']?></td>
         <td class="text-center"><?=$r['SUM_QUANTITE']?></td>
@@ -69,7 +69,8 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
         <td class="text-center">
           <div>
             <i class='bx bxs-trash delete fs-4' id="1"></i>
-            <i class='bx bxs-edit edit fs-4' data-bs-whatever="<?=$r?>" data-bs-toggle="modal" data-bs-target="#modal-edit-stock"></i>
+            <i class='bx bxs-edit edit fs-4' data-bs-whatever="<?=$r?>" data-bs-toggle="modal"
+              data-bs-target="#modal-edit-stock"></i>
           </div>
         </td>
       </tr>
@@ -77,6 +78,46 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
     </tbody>
   </table>
 </section>
+
+<!-- Modal de sortie en stock -->
+
+<div class="modal fade" id="modal-out-stock" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Sortie au stock d'un produit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" id="form-out-stock" class="form col">
+          <div class="col-12 row mt-3">
+            <div class="col-md-6 col-sm-12 mt-sm-3">
+              <label for="stock-out-designation" class="form-label">Designation</label>
+              <select type="text" class="form-select" id="stock-out-designation"name="designation" value="">
+              <option value="">----------</option>
+                <?php foreach ($resultTotalProductInStock as $r) : ?>
+                  <option value="<?=$r['ID_P']?>"><?=$r['DESIGNATION']?></option>
+                <?php endforeach ?>
+              </select>
+            </div>
+            <div class="col-md-6 col-sm-12 mt-sm-3">
+              <label for="stock-out-quantite" class="form-label">Quantite</label>
+              <input type="number" class="form-control" id="stock-out-quantite" name="quantite">
+            </div>
+          </div>
+          <div class="btn-action mt-4 d-flex justify-content-end align-items-center">
+            <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-primary m-2">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- fin code formulaire d'ajout produit -->
+
 
 <!-- Modal edition en stock -->
 
@@ -104,8 +145,8 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
             </div>
           </div>
           <div class="col-12 mt-sm-3">
-              <input type="number" class="form-control " hidden id="recipient-stock"  name="id-produit">
-            </div>
+            <input type="number" class="form-control " hidden id="recipient-stock" name="id-produit">
+          </div>
           <div class="btn-action mt-4 d-flex justify-content-end align-items-center">
             <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">Annuler</button>
             <button type="submit" class="btn btn-primary m-2">Enregistrer</button>
@@ -217,7 +258,8 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
         <td class="text-center">
           <div>
             <i class='bx bxs-trash delete fs-4' id="delete/magasin/<?=$r['ID_P']?>/product"></i>
-            <i class='bx bxs-edit edit fs-4' data-bs-whatever="<?=$r?>" data-bs-toggle="modal" data-bs-target="#modal-edit-magasin"></i>
+            <i class='bx bxs-edit edit fs-4' data-bs-whatever="<?=$r?>" data-bs-toggle="modal"
+              data-bs-target="#modal-edit-magasin"></i>
           </div>
         </td>
       </tr>
@@ -251,8 +293,8 @@ $resultTotalProductInStock = Utils::getTotalProductInStock();
             </div>
           </div>
           <div class="col-12 mt-sm-3">
-              <input type="number" class="form-control " hidden id="recipient-magasin"  name="id-produit">
-            </div>
+            <input type="number" class="form-control " hidden id="recipient-magasin" name="id-produit">
+          </div>
           <div class="btn-action mt-4 d-flex justify-content-end align-items-center">
             <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">Annuler</button>
             <button type="submit" class="btn btn-primary m-2">Enregistrer</button>
