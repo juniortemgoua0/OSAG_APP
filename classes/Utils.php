@@ -178,6 +178,11 @@ class Utils {
             VALUES(? , ? , ? , ? )";
           $feedback = "Produit ajouter avec succes";
           break;
+        case "outstock" :
+          $sql = "INSERT INTO sortie (ID_P , ID_UTIL,  QUANTITE )
+            VALUES(? , ? , ? )";
+          $feedback = "Produit ajouter avec succes";
+          break;
       }
 
       Database::query($sql , $data);

@@ -45,6 +45,13 @@ class Main {
                 let formData = Main.formBindValue(event.target, "edit-stock")
                 console.log(formData)
             })
+
+            $('#form-out-stock').submit(function(event) {
+                event.preventDefault()
+                let formData = Main.formBindValue(event.target, "add-outstock")
+                console.log(formData)
+            })
+
         });
     }
 
@@ -239,6 +246,13 @@ class Main {
                     }
                     break
                 case "magasin":
+                    formData = {
+                        designation: form.elements['designation'].value,
+                        quantite: form.elements['quantite'].value,
+                        type: type
+                    }
+                    break
+                case "outstock":
                     formData = {
                         designation: form.elements['designation'].value,
                         quantite: form.elements['quantite'].value,
