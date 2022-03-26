@@ -1,3 +1,13 @@
+<?php
+$result_entrer = Utils::getEntrer();
+
+$result_exposer = Utils::getExposer();
+// echo "<pre>";
+// print_r($result_exposer);
+// echo "</pre>";
+?> 
+
+
 <section class="home-section">
   <div class="head-section row">
     <h1 class="text-black-50 header-title col-sm-12 col-md-6 order-sm-2 order-md-1">Bienvenue sur notre dashboard</h1>
@@ -40,52 +50,136 @@
     </div>
   </div>
 </section>
+
+
+<?php if(isset($_SESSION['user']) && $_SESSION['user']['FONCTION'] == "directeur"){ ?>
 <section class="data">
+  <h3 class="my-3">Historique des produits entrés</h3>
   <table class="table text-center">
     <thead>
     <tr>
       <th>
-        <i class='bx bxl-product-hunt'></i><span>Image</span>
+        <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
       </th>
       <th>
         <i class='bx bxs-spreadsheet'></i>Designation
       </th>
       <th>
-        <i class='bx bxs-spreadsheet'></i>Prix
+        <i class='bx bxs-spreadsheet'></i>Quantite
       </th>
       <th>
-        <i class='bx bxs-spreadsheet'></i>Date save
+        <i class='bx bx-calendar-check'></i>Quantite restante
       </th>
       <th>
-        <i class='bx bx-calendar-check'></i>Date update
+        <i class='bx bxs-home'></i> Marque
       </th>
       <th>
-        <i class='bx bxs-home'></i> Disponibilite
+        <i class='bx bxs-home'></i> Categorie
       </th>
       <th>
-        Action
+        <i class='bx bxs-home'></i> Date d'ajout
       </th>
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($t as $a): ?>
+    <?php foreach ($result_entrer as $r): ?>
     <tr>
-      <td><img src="../assets/images/office-g58d369757_1920.jpg" alt=""></td>
-      <td>Ordinateur Portable</td>
-      <td>1000f</td>
-      <td>2022/10/14</td>
-      <td>2022/12/16</td>
-      <td>
-        <div class="state d-flex justify-content-evenly align-items-center">
-          <span class="round_dispo" style="background: white"></span><span>Disponible</span>
-        </div>
-      </td>
-      <td>
-        <div>
-          <i class='bx bxs-trash delete fs-4' ></i>
-          <i class='bx bxs-edit edit fs-4'></i>
-        </div>
-      </td>
+      <td class="text-center"><?=$r['ID_ENTRER']?></td>
+      <td class="text-center"><?=$r['DESIGNATION']?></td>
+      <td class="text-center"><?=$r['QUANTITE']?></td>
+      <td class="text-center"><?=$r['QUANTITE_EN_COURS']?></td>
+      <td class="text-center"><?=$r['MARQUE']?></td>
+      <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
+      <td class="text-center"><?=$r['DATE_AJOUT']?></td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+</section>
+<?php } ?>
+
+<section class="data">
+  <h3 class="my-3">Historique des produits exposés </h3>
+  <table class="table text-center">
+    <thead>
+    <tr>
+      <th>
+        <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
+      </th>
+      <th>
+        <i class='bx bxs-spreadsheet'></i>Designation
+      </th>
+      <th>
+        <i class='bx bxs-spreadsheet'></i>Quantite
+      </th>
+      <th>
+        <i class='bx bx-calendar-check'></i>Quantite restante
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Marque
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Categorie
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Date d'ajout
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($result_exposer as $r): ?>
+    <tr>
+      <td class="text-center"><?=$r['ID_EXPOSER']?></td>
+      <td class="text-center"><?=$r['DESIGNATION']?></td>
+      <td class="text-center"><?=$r['QUANTITE']?></td>
+      <td class="text-center"><?=$r['QUANTITE_EN_COURS']?></td>
+      <td class="text-center"><?=$r['MARQUE']?></td>
+      <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
+      <td class="text-center"><?=$r['DATE_AJOUT']?></td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+</section>
+
+<section class="data">
+  <h3 class="my-3">Historique des produits sortis</h3>
+  <table class="table text-center">
+    <thead>
+    <tr>
+      <th>
+        <i class='bx bxl-product-hunt'></i><span>Identifiant</span>
+      </th>
+      <th>
+        <i class='bx bxs-spreadsheet'></i>Designation
+      </th>
+      <th>
+        <i class='bx bxs-spreadsheet'></i>Quantite
+      </th>
+      <th>
+        <i class='bx bx-calendar-check'></i>Quantite restante
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Marque
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Categorie
+      </th>
+      <th>
+        <i class='bx bxs-home'></i> Date d'ajout
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($result_entrer as $r): ?>
+    <tr>
+      <td class="text-center"><?=$r['ID_ENTRER']?></td>
+      <td class="text-center"><?=$r['DESIGNATION']?></td>
+      <td class="text-center"><?=$r['QUANTITE']?></td>
+      <td class="text-center"><?=$r['QUANTITE_EN_COURS']?></td>
+      <td class="text-center"><?=$r['MARQUE']?></td>
+      <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
+      <td class="text-center"><?=$r['DATE_AJOUT']?></td>
     </tr>
     <?php endforeach; ?>
     </tbody>

@@ -254,7 +254,37 @@ class Main {
                     formData: formData
                 }
             }).done(function(data) {
-                alert(data)
+                if (data.includes('succes')) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Bien...',
+                        text: data,
+                        confirmButtonText: 'OK!',
+                    }).then(function(result) {
+                        if (result.isConfirmed) {
+                            const getPage = () => {
+                                if (type === "magasin" || type === "stock") {
+                                    return "stock"
+                                } else if (type === "utilisateur") {
+                                    return "team"
+                                } else {
+                                    return "product"
+                                }
+                            }
+                            setTimeout(() => {
+                                window.location.href = 'index.php?page=' + getPage()
+                            }, 700)
+                        }
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ooups...',
+                        text: data,
+                        confirmButtonText: 'OK!',
+                    }).then(function(result) {})
+                }
+
             })
 
         } else if (operation === "edit") {
@@ -286,7 +316,37 @@ class Main {
                     formData: formData
                 }
             }).done(function(data) {
-                alert(data)
+                if (data.includes('succes')) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Bien...',
+                        text: data,
+                        confirmButtonText: 'OK!',
+                    }).then(function(result) {
+                        if (result.isConfirmed) {
+                            const getPage = () => {
+                                if (type === "magasin" || type === "stock") {
+                                    return "stock"
+                                } else if (type === "utilisateur") {
+                                    return "team"
+                                } else {
+                                    return "product"
+                                }
+                            }
+                            setTimeout(() => {
+                                window.location.href = 'index.php?page=' + getPage()
+                            }, 700)
+                        }
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ooups...',
+                        text: data,
+                        confirmButtonText: 'OK!',
+                    }).then(function(result) {})
+                }
+
             })
         }
 
@@ -294,6 +354,5 @@ class Main {
     }
 
 }
-
 
 new Main()

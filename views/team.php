@@ -62,41 +62,41 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
             <div class="col-12 row mt-3">
               <div class="col-md-6 col-sm-12 mt-sm-3">
                 <label for="prenom" class="form-label">Nom</label>
-                <input type="text" class="form-control" name="nom" placeholder="" require>
+                <input type="text" class="form-control" name="nom" placeholder="" required>
               </div>
               <div class="col-md-6 col-sm-12 mt-sm-3">
                 <label for="ajout_utilisateur_prenom" class="form-label">Prenom</label>
-                <input type="text" class="form-control" name="prenom" id="ajout_utilisateur_prenom" placeholder="">
+                <input type="text" class="form-control" name="prenom" id="ajout_utilisateur_prenom" placeholder="" required>
               </div>
             </div>
 
             <div class="col-12 mt-3">
               <label for="ajout_utilisateur_email" class="form-label">Email</label>
               <input type="email" class="form-control" placeholder="Email" name="email" id="ajout_utilisateur_email"
-                require>
+                required>
             </div>
 
             <div class="col-12 mt-3">
               <label for="ajout_utilisateur_password" class="form-label">Mot de passe</label>
-              <input type="text" class="form-control" name="password" id="ajout_utilisateur_password" require>
+              <input type="text" class="form-control" name="password" id="ajout_utilisateur_password" required>
             </div>
 
             <div class="col-12 row mt-3">
               <div class="col-md-6 col-sm-12 mt-sm-3">
                 <label for="ajout_utilisateur_cni" class="form-label">Numero CNI</label>
-                <input type="text" class="form-control" id="ajout_utilisateur_cni" name="cni" placeholder="" require>
+                <input type="text" class="form-control" id="ajout_utilisateur_cni" name="cni" placeholder="" required>
               </div>
               <div class="col-md-6 col-sm-12 mt-sm-3">
                 <label for="ajout_utilisateur_telephone" class="form-label">Telephone</label>
                 <input type="text" class="form-control" id="ajout_utilisateur_telephone" name="telephone"
-                  placeholder="">
+                  placeholder="" required>
               </div>
             </div>
 
             <div class="col-12 row mt-3">
               <div class="col-md-6 col-sm-12 mt-sm-3">
                 <label for="ajout_utilisateur_fonction" class="form-label">Fonction</label>
-                <select class="form-select" id="ajout_utilisateur_fonction" name="fonction"></br>
+                <select class="form-select" id="ajout_utilisateur_fonction" name="fonction" required></br>
                   <option>---------</option>
                   <?php foreach($result_fonction as $r): ?>
                   <option value="<?=$r["ID_FONCTION"]?>"><?=$r['FONCTION']?></option>;
@@ -105,7 +105,7 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
               </div>
               <div class="col-md-6 col-sm-12 mt-sm-3">
                 <label for="ajout_utilisateur_ville" class="form-label">Ville</label>
-                <input type="text" class="form-control" id="ajout_utilisateur_ville" name="ville" placeholder="">
+                <input type="text" class="form-control" id="ajout_utilisateur_ville" name="ville" placeholder="" required>
               </div>
             </div>
 
@@ -162,13 +162,13 @@ $result_team = Utils::getUsers($_SESSION['user']['ID_AG']);
       <tbody>
         <?php foreach ($result_team as $r): ?>
         <tr>
-          <td><?=$r['ID_UTIL']?></td>
-          <td><?=$r['NOM']?></td>
-          <td><?=$r['PRENOM']?></td>
-          <td><?=$r['EMAIL']?></td>
-          <td><?=$r['FONCTION']?></td>
-          <td><?=$r['DATE_SAVE']?></td>
-          <td>
+          <td class="text-center"><?=$r['ID_UTIL']?></td>
+          <td class="text-center"><?=$r['NOM']?></td>
+          <td class="text-center"><?=$r['PRENOM']?></td>
+          <td class="text-center"><?=$r['EMAIL']?></td>
+          <td class="text-center"><?=$r['FONCTION']?></td>
+          <td class="text-center"><?=$r['DATE_SAVE']?></td>
+          <td class="text-center">
             <div>
               <i class='bx bxs-trash delete fs-4' id="delete/utilisateur/<?=$r['ID_UTIL']?>/team"></i>
               <i class='bx bxs-edit edit fs-4' id="edit/utilisateur/<?=$r['ID_UTIL']?>/team"></i>

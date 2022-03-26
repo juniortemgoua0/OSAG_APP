@@ -1,6 +1,6 @@
 <?php 
 
- class Utils {
+class Utils {
 
   /**
    * Undocumented function
@@ -11,27 +11,27 @@
    */ 
     public static function login(string $username , string $password) 
     {
-        $status = false; // va etre retourner par la fonction , true si tout se passe bien et false dans le cas contraire 
-        $sql = "SELECT * FROM utilisateur as u, fonction as f , agence as a 
-                WHERE EMAIL = ? 
-                AND u.ID_AG = a.ID_AG 
-                AND u.ID_FONCTION = f.ID_FONCTION";
-        $result =  Database::query($sql , [$username]);
+      $status = false; // va etre retourner par la fonction , true si tout se passe bien et false dans le cas contraire 
+      $sql = "SELECT * FROM utilisateur as u, fonction as f , agence as a 
+        WHERE EMAIL = ? 
+        AND u.ID_AG = a.ID_AG 
+        AND u.ID_FONCTION = f.ID_FONCTION";
+      $result =  Database::query($sql , [$username]);
 
-        if(count($result) > 0){
-           if($result[0]['PASSWORD'] == $password){
-             $_SESSION['connect'] = true;
-             $_SESSION['user'] = $result[0];
-             $status = true ;
-             return $status;
-           }else{
-               $_SESSION['error_login'] = "Mot de passe incorrect";
-               return $status ;
-           }
-        }else {
-            $_SESSION['error_login'] = "Nom d'utilisateur incorrect";
-            return $status ;
+      if(count($result) > 0){
+        if($result[0]['PASSWORD'] == $password){
+          $_SESSION['connect'] = true;
+          $_SESSION['user'] = $result[0];
+          $status = true ;
+          return $status;
+        }else{
+          $_SESSION['error_login'] = "Mot de passe incorrect";
+          return $status ;
         }
+      }else {
+        $_SESSION['error_login'] = "Nom d'utilisateur incorrect";
+        return $status ;
+      }
     }
 
     /**
@@ -40,14 +40,14 @@
      * 
      * @return array
      */
-   public static function getAllProducts() : array
-   {
+  public static function getAllProducts() : array
+  {
     
     $sql = "SELECT * FROM produit as p, categorie as c 
     WHERE p.ID_CAT = c.ID_CAT
     AND p.STATUT = 0" ;
     return Database::query($sql);
-   }
+  }
 
 
     /**
@@ -75,9 +75,9 @@
      */
     public static function getAgences(): array 
     {
-     
-     $sql = "SELECT * FROM agence" ;
-     return Database::query($sql);
+    
+      $sql = "SELECT * FROM agence" ;
+      return Database::query($sql);
     }
 
     /**
@@ -95,6 +95,52 @@
       $sql = "SELECT * FROM categorie" ;
       return Database::query($sql);
     }
+
+
+    public static function getEntrer(){
+      $sql = "SELECT e.ID_ENTRER , p.DESIGNATION , e.QUANTITE , e.QUANTITE_EN_COURS , p.MARQUE , c.LIBELLE_CAT , e.DATE_AJOUT FROM entrer AS e , produit AS p , utilisateur AS u , categorie AS c 
+      WHERE e.ID_P = p.ID_P 
+      AND  e.ID_UTIL = u.ID_UTIL 
+      AND p.ID_CAT = c.ID_CAT
+      AND u.ID_AG = ? 
+      ORDER BY e.ID_ENTRER";
+      return Database::query($sql ,  [$_SESSION['user']['ID_AG']]);
+    }
+
+
+    public static function getExposer(){
+      $sql = "SELECT e.ID_EXPOSER , p.DESIGNATION , e.QUANTITE , e.QUANTITE_EN_COURS , p.MARQUE , c.LIBELLE_CAT , e.DATE_AJOUT FROM exposer AS e , produit AS p , utilisateur AS u , categorie AS c 
+      WHERE e.ID_P = p.ID_P 
+      AND  e.ID_UTIL = u.ID_UTIL 
+      AND p.ID_CAT = c.ID_CAT
+      AND u.ID_AG = ? 
+      ORDER BY e.ID_EXPOSER";
+      return Database::query($sql , [$_SESSION['user']['ID_AG']]);
+    }
+
+    public static function getTotalProductInMagasin(){
+      
+      $sql = "SELECT * , SUM(e.QUANTITE_EN_COURS) AS SUM_QUANTITE FROM entrer AS e  , produit AS p ,categorie AS c , utilisateur AS u
+      WHERE e.ID_P = p.ID_P
+      AND p.ID_CAT = c.ID_CAT
+      AND u.ID_UTIL = e.ID_UTIL
+      AND u.ID_AG = ? 
+      GROUP BY e.ID_P";
+      return Database::query($sql , [$_SESSION['user']['ID_AG']]);
+    }
+
+
+    public static function getTotalProductInStock(){
+
+      $sql = "SELECT * , SUM(e.QUANTITE_EN_COURS) AS SUM_QUANTITE FROM exposer AS e  , produit AS p , categorie AS c , utilisateur AS u
+      WHERE e.ID_P = p.ID_P
+      AND p.ID_CAT = c.ID_CAT
+      AND u.ID_UTIL = e.ID_UTIL
+      AND u.ID_AG = ? 
+      GROUP BY e.ID_P";
+      return Database::query($sql , [$_SESSION['user']['ID_AG']]);
+    }
+
     /**
      * Undocumented function
      *
@@ -113,24 +159,29 @@
       switch ($type){
         case "produit" :
           $sql = "INSERT INTO produit(ID_CAT , DESIGNATION , MARQUE , QUANTITE , PRIX)
-                  VALUES(? , ? , ? , ? , ? )";
-          $feedback = 
-                    break;
-          case "utilisateur" :
-            $sql = "INSERT INTO utilisateur(ID_AG , NOM , PRENOM , EMAIL , NUM_CNI , VILLE , TELEPHONE, PASSWORD , ID_FONCTION)
+            VALUES(? , ? , ? , ? , ? )";
+          $feedback = "Produit ajouter avec succes";
+          break;
+          
+        case "utilisateur" :
+          $sql = "INSERT INTO utilisateur(ID_AG , NOM , PRENOM , EMAIL , NUM_CNI , VILLE , TELEPHONE, PASSWORD , ID_FONCTION)
             VALUES(? , ? , ? , ? , ?, ? , ? , ? , ?)";
-            break;
-            case "stock":
-              $sql = "INSERT INTO exposer(ID_P , ID_UTIL , QUANTITE)
-              VALUES(? , ? , ?  )";
-              break;
-            case "magasin" : 
-              $sql = "INSERT INTO ajouter(ID_P , ID_UTIL  QUANTITE)
-              VALUES(? , ? , ? )";
-             break;
+          $feedback = "Utilisateur enregistrer avec succes";
+          break;
+        case "stock":
+          $sql = "INSERT INTO exposer (ID_P , ID_UTIL,  QUANTITE , QUANTITE_EN_COURS)
+            VALUES(? , ? , ? , ?)";
+          $feedback = "Produit ajouter avec succes";
+          break;
+        case "magasin" : 
+          $sql = "INSERT INTO entrer (ID_P , ID_UTIL,  QUANTITE , QUANTITE_EN_COURS)
+            VALUES(? , ? , ? , ? )";
+          $feedback = "Produit ajouter avec succes";
+          break;
       }
+
       Database::query($sql , $data);
-      
+      return $feedback;
     } 
 
     /**
@@ -148,20 +199,20 @@
         $sql = '';
         switch ($type){
           case 'utilisateur':
-           $sql = "UPDATE utilisateur SET STATUT = 1 WHERE ID_UTIL = ? ";
-           $feedback = "Utilisateur supprimer avec succes";
-           break;
+            $sql = "UPDATE utilisateur SET STATUT = 1 WHERE ID_UTIL = ? ";
+            $feedback = "Utilisateur supprimer avec succes";
+            break;
           case 'produit':
-           $sql = "UPDATE produit SET STATUT = 1 WHERE ID_P = ? ";
-           $feedback = "Produit supprimer avec succes";
-           break;
+            $sql = "UPDATE produit SET STATUT = 1 WHERE ID_P = ? ";
+            $feedback = "Produit supprimer avec succes";
+            break;
         }
         Database::query($sql , [$id]);
         return $feedback;
       }else {
         return "Vous ne disposez pas des droit requis pour supprimer cet element ";
       }
-     
+    
     }
 
     /**
@@ -177,10 +228,10 @@
      * @return string message de feedback
      */
     public static function update( string $type , string $operation ,
-     int $id_product, int $quantite) : string
-     {
-       $sql = "";
-       $status = "L'operation a echoue";
+      int $id_product, int $quantite) : string
+    {
+        $sql = "";
+        $status = "L'operation a echoue";
         if( $type == "magasin" ){ 
           if($operation == "ajout"){
             $sql = "UPDATE " ;
@@ -202,13 +253,8 @@
           Database::query($sql , [$id_product , $quantite]);
           return $status;
         } 
-       return $status;
+      return $status;
     }
-
-
-    public static function InsertImg(){
-      
-    }
- }
+}
 
 ?>

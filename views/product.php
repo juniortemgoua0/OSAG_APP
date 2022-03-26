@@ -55,7 +55,7 @@
 </button> -->
 
   <!-- Modal -->
-  <div class="modal fade" id="modal-produit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  <div class="modal fade" id="modal-produit-add" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -67,23 +67,28 @@
           <form action="" id="form-produit" class="form col">
             <div class="col-12 row mt-3">
               <div class="col-md-6 col-sm-12 mt-sm-3">
+<<<<<<< HEAD
                 <label for="designation" class="form-label">Designation</label>
                 <input type="email" class="form-control" id="designation" name="designation">
 >>>>>>> 42a3aeb298e15ff41f6c2c8f4e13c372940011e9
+=======
+                <label for="produit-add-designation" class="form-label">Designation</label>
+                <input type="text" class="form-control" id="produit-add-designation" name="designation" required>
+>>>>>>> 8e86ff492cc7d26c7ee7786bc08598a74229c88f
               </div>
               <div class="col-md-6 col-sm-12 mt-sm-3">
-                <label for="marque" class="form-label">Marque</label>
-                <input type="password" class="form-control" id="marque" name="marque">
+                <label for="produit-add-marque" class="form-label">Marque</label>
+                <input type="text" class="form-control" id="produit-add-marque" name="marque" required>
               </div>
             </div> 
 
             <div class="col-12 mt-3">
-              <label for="prix" class="form-label">Prix</label>
-              <input type="number" class="form-control" id="prix" name="prix" placeholder="30000">
+              <label for="produit-add-prix" class="form-label">Prix</label>
+              <input type="number" class="form-control" id="produit-add-prix" name="prix" placeholder="30000" required>
             </div>
             <div class="col-12 mt-3">
-              <label for="categorie" class="form-label">Categorie</label>
-              <select class="form-select" id="categorie" name="categorie">
+              <label for="produit-add-categorie" class="form-label">Categorie</label>
+              <select class="form-select" id="produit-add-categorie" name="categorie" required>
                 <option value="" desabled>----------</option>
                 <?php foreach ($result_category as $r):?>
                   <option value="<?=$r['ID_CAT']?>"><?=$r['LIBELLE_CAT']?></option>
@@ -120,7 +125,7 @@
       <h1 class="text-black-50 header-title col-sm-12 col-md-6">Liste de produit enregistrer</h1>
       <div class="col-sm-12 col-md-6 mt-sm-3 d-flex justify-content-md-end align-items-center"
         class="w3-button w3-black">
-        <a href="#" data-bs-toggle="modal" data-bs-target="#modal-produit"><button class="btn primary-btn"> <i
+        <a href="#" data-bs-toggle="modal" data-bs-target="#modal-produit-add"><button class="btn primary-btn"> <i
               class="bi bi-plus-lg fs-5"></i> Nouveau produit</button></a>
       </div>
     </div>
@@ -172,7 +177,7 @@
 </section>
 =======
   <section class="data ">
-    <table class="table text-center">
+    <table class="table ">
       <thead>
         <tr>
           <th>
@@ -198,12 +203,12 @@
       <tbody>
         <?php foreach ($result_product as $r): ?>
         <tr>
-          <td><?=$r['ID_P']?></td>
-          <td><?=$r['DESIGNATION']?></td>
-          <td><?=$r['MARQUE']?></td>
-          <td><?=$r['LIBELLE_CAT']?></td>
-          <td> <?=$r['DATE_SAVE']?></td>
-          <td>
+          <td class="text-center"><?=$r['ID_P']?></td>
+          <td class="text-center"><?=$r['DESIGNATION']?></td>
+          <td class="text-center"><?=$r['MARQUE']?></td>
+          <td class="text-center"><?=$r['LIBELLE_CAT']?></td>
+          <td class="text-center"> <?=$r['DATE_SAVE']?></td>
+          <td class="text-center">
             <div>
               <i class='bx bxs-trash delete fs-4' id="delete/produit/<?=$r['ID_P']?>/product"></i>
               <i class='bx bxs-edit edit fs-4' id="edit/produit/<?=$r['ID_P']?>/product"></i>
